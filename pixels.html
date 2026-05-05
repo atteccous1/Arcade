@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixels - Arcade Design Games</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'SF Pro';
+            src: url('https://db.onlinewebfonts.com/t/0de2c8e3122c42d38a065f4d89617ce8.woff2') format('woff2');
+        }
+
+        body {
+            margin: 0;
+            font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 25%, #f5f3ff 50%, #ede9fe 75%, #fdf4ff 100%);
+            background-size: 400% 400%;
+            animation: flowy 15s ease infinite;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        @keyframes flowy {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Hero Background Gradient (Matching game.html) */
+        .page-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 20%, rgba(162, 89, 255, 0.15), transparent 40%),
+                        radial-gradient(circle at 10% 80%, rgba(240, 103, 255, 0.15), transparent 40%);
+            z-index: -1;
+        }
+
+        header {
+            background: white;
+            padding: 12px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 10;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .logo-container img { height: 48px; }
+        .logo-text { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .game-container {
+            width: 90%;
+            max-width: 1200px;
+            height: 80vh;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .game-header {
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+        }
+
+        .game-title {
+            font-weight: 700;
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .back-btn {
+            padding: 8px 16px;
+            background: #f1f3f5;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #495057;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .back-btn:hover {
+            background: #e9ecef;
+        }
+
+        iframe {
+            width: 100%;
+            flex: 1;
+            border: none;
+        }
+
+        .loading-screen {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            transition: opacity 0.5s ease;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #a259ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            margin-top: 20px;
+            color: #a259ff;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-bg"></div>
+
+    <header>
+        <a href="game.html" class="logo-container">
+            <img src="visuals images/Screenshot (140).png" alt="Arcade Logo">
+            <span class="logo-text">Arcade</span>
+        </a>
+        <div class="nav-links" style="display: flex; gap: 30px;">
+            <a href="game.html" style="text-decoration: none; color: #444; font-weight: 600;">Games</a>
+            <a href="#" style="text-decoration: none; color: #444; font-weight: 600;">Pricing</a>
+            <a href="#" style="text-decoration: none; color: #444; font-weight: 600;">Features</a>
+        </div>
+        <div style="width: 100px;"></div>
+    </header>
+
+    <main>
+        <div class="game-container">
+            <div class="game-header">
+                <div class="game-title">
+                    <i class="fa-solid fa-expand" style="color: #a259ff;"></i>
+                    Pixact.ly - The Pixel Precision Game
+                </div>
+                <a href="game.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Dashboard</a>
+            </div>
+            
+            <div class="loading-screen" id="loader">
+                <div class="spinner"></div>
+                <div class="loading-text">LOADING PIXELS...</div>
+            </div>
+
+            <iframe src="http://pixact.ly/" onload="hideLoader()"></iframe>
+        </div>
+    </main>
+
+    <script>
+        function hideLoader() {
+            document.getElementById('loader').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('loader').style.display = 'none';
+            }, 500);
+        }
+    </script>
+</body>
+</html>

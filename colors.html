@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colors - Arcade Design Games</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'SF Pro';
+            src: url('https://db.onlinewebfonts.com/t/0de2c8e3122c42d38a065f4d89617ce8.woff2') format('woff2');
+        }
+
+        body {
+            margin: 0;
+            font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 25%, #f5f3ff 50%, #ede9fe 75%, #fdf4ff 100%);
+            background-size: 400% 400%;
+            animation: flowy 15s ease infinite;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        @keyframes flowy {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .page-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 20%, rgba(162, 89, 255, 0.15), transparent 40%),
+                        radial-gradient(circle at 10% 80%, rgba(240, 103, 255, 0.15), transparent 40%);
+            z-index: -1;
+        }
+
+        header {
+            background: white;
+            padding: 12px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 10;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .logo-container img { height: 48px; }
+        .logo-text { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .game-wrapper {
+            background: white;
+            width: 95%;
+            max-width: 1300px;
+            height: 90vh;
+            border-radius: 32px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.1);
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .game-sidebar {
+            width: 380px;
+            background: #fafafa;
+            border-right: 1px solid #eee;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .game-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            position: relative;
+        }
+
+        .level-info h1 { font-size: 36px; margin: 0; font-weight: 800; color: #1a1a1a; }
+        .level-info p { color: #666; font-size: 16px; line-height: 1.5; margin-top: 12px; }
+
+        .palette-slots {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .slot {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 20px;
+            background: white;
+            border-radius: 16px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .slot.active {
+            border-color: #a259ff;
+            box-shadow: 0 8px 24px rgba(162, 89, 255, 0.1);
+        }
+
+        .slot-color {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #f1f1f1;
+        }
+
+        .slot-info { flex: 1; }
+        .slot-name { font-weight: 700; color: #1a1a1a; font-size: 14px; }
+        .slot-status { color: #999; font-size: 12px; }
+
+        .wheel-container {
+            position: relative;
+            width: 540px;
+            height: 540px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .color-wheel {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(red, yellow, lime, aqua, blue, magenta, red);
+            position: relative;
+            cursor: crosshair;
+        }
+
+        .wheel-inner {
+            position: absolute;
+            top: 15%; left: 15%; width: 70%; height: 70%;
+            background: white;
+            border-radius: 50%;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .target-palette {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .target-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .user-preview {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 10;
+            cursor: move;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        .action-btn {
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            padding: 20px 48px;
+            border-radius: 100px;
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 40px;
+        }
+
+        .action-btn.match { background: linear-gradient(90deg, #f067ff, #a259ff); }
+
+        #feedback {
+            position: absolute;
+            top: 40px;
+            font-size: 24px;
+            font-weight: 800;
+            text-align: center;
+            width: 100%;
+        }
+
+        .back-btn { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #666; font-weight: 600; margin-top: auto; }
+    </style>
+</head>
+<body>
+    <div class="page-bg"></div>
+
+    <header>
+        <a href="game.html" class="logo-container">
+            <img src="visuals images/Screenshot (140).png" alt="Arcade Logo">
+            <span class="logo-text">Arcade</span>
+        </a>
+        <div class="nav-links" style="display: flex; gap: 30px;">
+            <a href="game.html" style="text-decoration: none; color: #444; font-weight: 600;">Games</a>
+            <a href="#" style="text-decoration: none; color: #444; font-weight: 600;">Pricing</a>
+            <a href="#" style="text-decoration: none; color: #444; font-weight: 600;">Features</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="game-wrapper">
+            <div id="feedback"></div>
+            
+            <div class="game-sidebar">
+                <div class="level-info">
+                    <div id="level-label" style="color: #a259ff; font-weight: 700; text-transform: uppercase;">LEVEL 1: HUE</div>
+                    <h1 id="level-title">Primary Match</h1>
+                    <p id="level-desc">Match the single target hue on the color wheel to proceed.</p>
+                </div>
+
+                <div class="palette-slots" id="slots-area">
+                    <!-- Slots will be injected here -->
+                </div>
+
+                <div style="margin-top: auto; padding-top: 40px;">
+                    <div style="font-weight: 700; color: #999; margin-bottom: 8px;">TOTAL ACCURACY</div>
+                    <div id="total-score" style="font-size: 42px; font-weight: 800; color: #a259ff;">0%</div>
+                </div>
+
+                <a href="game.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Exit Game</a>
+            </div>
+
+            <div class="game-main">
+                <div class="wheel-container">
+                    <div class="color-wheel" id="wheel">
+                        <div class="wheel-inner">
+                            <div class="target-palette" id="target-palette">
+                                <!-- Target circles injected here -->
+                            </div>
+                            <div id="target-label" style="font-weight: 800; color: #999; letter-spacing: 1px;">TARGET</div>
+                        </div>
+                    </div>
+                    <div class="user-preview" id="cursor-primary" data-slot="0"></div>
+                    <div class="user-preview" id="cursor-secondary" data-slot="1"></div>
+                    <div class="user-preview" id="cursor-accent" data-slot="2"></div>
+                </div>
+
+                <button class="action-btn match" id="check-btn" onclick="checkMatch()">CHECK MATCH</button>
+                <button class="action-btn" id="next-btn" style="display: none;" onclick="advanceLevel()">NEXT LEVEL</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentLevel = 1;
+        let activeSlot = 0;
+        let levels = {
+            1: { name: "Primary Match", label: "HUE", desc: "Match the single target hue precisely.", types: ["Primary"], angles: [0] },
+            2: { name: "Contrast Challenge", label: "COMPLEMENTARY", desc: "Build a complementary scheme using two opposite hues.", types: ["Primary", "Accent"], angles: [0, 180] },
+            3: { name: "Design Legend", label: "TRIADIC PALETTE", desc: "Build a full triadic scheme with Primary, Tertiary, and Accent colors.", types: ["Primary", "Tertiary", "Accent"], angles: [0, 120, 240] }
+        };
+
+        let targetHues = [];
+        let userHues = [0, 0, 0];
+        let isDragging = false;
+
+        const wheel = document.getElementById('wheel');
+        const cursors = [document.getElementById('cursor-primary'), document.getElementById('cursor-secondary'), document.getElementById('cursor-accent')];
+        const slotsArea = document.getElementById('slots-area');
+        const targetArea = document.getElementById('target-palette');
+        const feedback = document.getElementById('feedback');
+
+        function initLevel() {
+            const config = levels[currentLevel];
+            document.getElementById('level-label').textContent = `LEVEL ${currentLevel}: ${config.label}`;
+            document.getElementById('level-title').textContent = config.name;
+            document.getElementById('level-desc').textContent = config.desc;
+            feedback.textContent = "";
+            document.getElementById('next-btn').style.display = 'none';
+            document.getElementById('check-btn').style.display = 'block';
+
+            // Generate Targets
+            targetHues = [];
+            const baseHue = Math.floor(Math.random() * 360);
+            config.angles.forEach(angle => targetHues.push((baseHue + angle) % 360));
+
+            // Reset Slots & Targets UI
+            slotsArea.innerHTML = '';
+            targetArea.innerHTML = '';
+            config.types.forEach((type, idx) => {
+                const slot = document.createElement('div');
+                slot.className = `slot ${idx === 0 ? 'active' : ''}`;
+                slot.onclick = () => selectSlot(idx);
+                slot.innerHTML = `<div class="slot-color" style="background: hsl(0, 100%, 50%)"></div><div class="slot-info"><div class="slot-name">${type}</div><div class="slot-status">Adjusting...</div></div>`;
+                slotsArea.appendChild(slot);
+
+                const target = document.createElement('div');
+                target.className = 'target-circle';
+                target.style.backgroundColor = `hsl(${targetHues[idx]}, 100%, 50%)`;
+                targetArea.appendChild(target);
+
+                cursors[idx].style.display = 'block';
+                userHues[idx] = (targetHues[idx] + 30) % 360; // Start slightly off
+                updateCursorPos(idx, userHues[idx]);
+            });
+
+            // Hide unused cursors
+            for(let i = config.types.length; i < 3; i++) cursors[i].style.display = 'none';
+            selectSlot(0);
+        }
+
+        function selectSlot(idx) {
+            activeSlot = idx;
+            document.querySelectorAll('.slot').forEach((s, i) => s.classList.toggle('active', i === idx));
+        }
+
+        function updateCursorPos(idx, hue) {
+            const rect = wheel.getBoundingClientRect();
+            const angle = (hue - 90) * (Math.PI / 180);
+            const dist = 230;
+            cursors[idx].style.left = (rect.width/2 + Math.cos(angle) * dist) + 'px';
+            cursors[idx].style.top = (rect.height/2 + Math.sin(angle) * dist) + 'px';
+            cursors[idx].style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
+            document.querySelectorAll('.slot-color')[idx].style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
+        }
+
+        function handleMove(e) {
+            if (!isDragging) return;
+            const rect = wheel.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            let angle = Math.atan2(e.clientY - centerY, e.clientX - centerX) * (180 / Math.PI);
+            angle = (angle + 90 + 360) % 360;
+            userHues[activeSlot] = Math.floor(angle);
+            updateCursorPos(activeSlot, userHues[activeSlot]);
+        }
+
+        wheel.onmousedown = (e) => { isDragging = true; handleMove(e); };
+        window.onmousemove = handleMove;
+        window.onmouseup = () => isDragging = false;
+
+        function checkMatch() {
+            let totalDiff = 0;
+            targetHues.forEach((th, i) => {
+                const diff = Math.min(Math.abs(th - userHues[i]), 360 - Math.abs(th - userHues[i]));
+                totalDiff += diff;
+            });
+            
+            const avgDiff = totalDiff / targetHues.length;
+            const accuracy = Math.max(0, 100 - (avgDiff / 1.8 * 2.5));
+            document.getElementById('total-score').textContent = Math.round(accuracy) + "%";
+
+            if (accuracy > 90) {
+                feedback.innerHTML = `<span style='color: #2ecc71'>GREAT SCHEME!</span>`;
+                document.getElementById('next-btn').style.display = 'block';
+                document.getElementById('check-btn').style.display = 'none';
+            } else {
+                feedback.innerHTML = `<span style='color: #e74c3c'>KEEP REFINING</span>`;
+            }
+        }
+
+        function advanceLevel() {
+            if (currentLevel < 3) { currentLevel++; initLevel(); } 
+            else { 
+                feedback.innerHTML = `<span style='color: #f067ff'>MASTER DESIGNER UNLOCKED!</span>`;
+                document.getElementById('next-btn').style.display = 'none';
+            }
+        }
+
+        initLevel();
+    </script>
+</body>
+</html>

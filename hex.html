@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hex Match - Arcade Design Games</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'SF Pro';
+            src: url('https://db.onlinewebfonts.com/t/0de2c8e3122c42d38a065f4d89617ce8.woff2') format('woff2');
+        }
+
+        body {
+            margin: 0;
+            font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 25%, #f5f3ff 50%, #ede9fe 75%, #fdf4ff 100%);
+            background-size: 400% 400%;
+            animation: flowy 15s ease infinite;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        @keyframes flowy {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header {
+            background: white;
+            padding: 12px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 10;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .logo-container img { height: 48px; }
+        .logo-text { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .game-wrapper {
+            background: white;
+            width: 95%;
+            max-width: 1200px;
+            height: 85vh;
+            border-radius: 32px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.1);
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .game-sidebar {
+            width: 350px;
+            background: #fafafa;
+            border-right: 1px solid #eee;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .game-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px;
+            position: relative;
+        }
+
+        .level-info h1 { font-size: 42px; margin: 0; font-weight: 800; color: #1a1a1a; }
+        .level-info p { color: #666; font-size: 18px; line-height: 1.5; margin-top: 15px; }
+
+        .hex-display {
+            font-size: 84px;
+            font-weight: 900;
+            color: #1a1a1a;
+            margin-bottom: 60px;
+            letter-spacing: -2px;
+            font-family: monospace;
+        }
+
+        .target-zone {
+            width: 300px;
+            height: 300px;
+            border: 4px dashed #eee;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        .target-zone.hover {
+            border-color: #a259ff;
+            background: rgba(162, 89, 255, 0.05);
+            transform: scale(1.05);
+        }
+
+        .swatches-grid {
+            display: flex;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .swatch {
+            width: 100px;
+            height: 100px;
+            border-radius: 24px;
+            cursor: grab;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            z-index: 100;
+            position: relative;
+        }
+
+        .swatch:active { cursor: grabbing; }
+
+        .swatch.dragging {
+            opacity: 0.8;
+            transform: scale(1.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            pointer-events: none;
+            position: fixed;
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #666;
+            font-weight: 600;
+            margin-top: auto;
+        }
+
+        #feedback {
+            position: absolute;
+            top: 40px;
+            font-size: 24px;
+            font-weight: 800;
+            text-align: center;
+            width: 100%;
+        }
+
+        .score-box {
+            background: white;
+            padding: 24px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .score-label { font-weight: 700; color: #999; text-transform: uppercase; font-size: 14px; margin-bottom: 8px; }
+        .score-value { font-size: 32px; font-weight: 800; color: #a259ff; }
+
+        .btn-next {
+            background: linear-gradient(90deg, #f067ff, #a259ff);
+            color: white;
+            border: none;
+            padding: 18px 48px;
+            border-radius: 100px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            display: none;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="game.html" class="logo-container">
+            <img src="visuals images/Screenshot (140).png" alt="Arcade Logo">
+            <span class="logo-text">Arcade</span>
+        </a>
+        <div class="nav-links" style="display: flex; gap: 30px;">
+            <a href="game.html" style="text-decoration: none; color: #444; font-weight: 600;">Games</a>
+            <a href="#" style="text-decoration: none; color: #444; font-weight: 600;">Pricing</a>
+            <a href="#" style="text-decoration: none; color: #444; font-weight: 600;">Features</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="game-wrapper">
+            <div id="feedback"></div>
+            
+            <div class="game-sidebar">
+                <div class="level-info">
+                    <div style="color: #a259ff; font-weight: 700; margin-bottom: 8px;">CHALLENGE</div>
+                    <h1>Hex Match</h1>
+                    <p>Identify the correct color for the HEX code. Drag the matching swatch into the target zone.</p>
+                </div>
+
+                <div class="score-box">
+                    <div class="score-label">Score</div>
+                    <div id="game-score" class="score-value">0</div>
+                </div>
+
+                <a href="game.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Exit Game</a>
+            </div>
+
+            <div class="game-main">
+                <div class="hex-display" id="target-hex">#000000</div>
+                <div class="target-zone" id="drop-zone">
+                    <div style="color: #eee; font-weight: 800; font-size: 20px;">DROP HERE</div>
+                </div>
+                
+                <div class="swatches-grid" id="swatch-container">
+                    <!-- Swatches will be injected via JS -->
+                </div>
+
+                <button class="btn-next" id="next-btn" onclick="nextRound()">Next Round</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let score = 0;
+        let targetColor = "";
+        let isDragging = false;
+        let currentSwatch = null;
+
+        const targetHexDisplay = document.getElementById('target-hex');
+        const swatchContainer = document.getElementById('swatch-container');
+        const dropZone = document.getElementById('drop-zone');
+        const scoreDisplay = document.getElementById('game-score');
+        const feedback = document.getElementById('feedback');
+        const nextBtn = document.getElementById('next-btn');
+
+        function generateRandomHex() {
+            const hex = Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+            return '#' + hex.toUpperCase();
+        }
+
+        function initRound() {
+            targetColor = generateRandomHex();
+            targetHexDisplay.textContent = targetColor;
+            feedback.textContent = "";
+            nextBtn.style.display = 'none';
+            dropZone.innerHTML = '<div style="color: #eee; font-weight: 800; font-size: 20px;">DROP HERE</div>';
+            dropZone.style.backgroundColor = 'transparent';
+            dropZone.style.borderColor = '#eee';
+            
+            const options = [targetColor];
+            while (options.length < 4) {
+                const newCol = generateRandomHex();
+                if (!options.includes(newCol)) options.push(newCol);
+            }
+            options.sort(() => Math.random() - 0.5);
+
+            swatchContainer.innerHTML = '';
+            options.forEach(color => {
+                const swatch = document.createElement('div');
+                swatch.className = 'swatch';
+                swatch.style.backgroundColor = color;
+                swatch.dataset.color = color;
+                
+                swatch.addEventListener('mousedown', startDrag);
+                swatchContainer.appendChild(swatch);
+            });
+        }
+
+        function startDrag(e) {
+            isDragging = true;
+            currentSwatch = e.target;
+            currentSwatch.classList.add('dragging');
+            currentSwatch.style.left = e.clientX - 50 + 'px';
+            currentSwatch.style.top = e.clientY - 50 + 'px';
+            
+            document.addEventListener('mousemove', drag);
+            document.addEventListener('mouseup', stopDrag);
+        }
+
+        function drag(e) {
+            if (!isDragging) return;
+            currentSwatch.style.left = e.clientX - 50 + 'px';
+            currentSwatch.style.top = e.clientY - 50 + 'px';
+            
+            const zoneRect = dropZone.getBoundingClientRect();
+            if (e.clientX > zoneRect.left && e.clientX < zoneRect.right &&
+                e.clientY > zoneRect.top && e.clientY < zoneRect.bottom) {
+                dropZone.classList.add('hover');
+            } else {
+                dropZone.classList.remove('hover');
+            }
+        }
+
+        function stopDrag(e) {
+            if (!isDragging) return;
+            isDragging = false;
+            document.removeEventListener('mousemove', drag);
+            document.removeEventListener('mouseup', stopDrag);
+            
+            const zoneRect = dropZone.getBoundingClientRect();
+            if (e.clientX > zoneRect.left && e.clientX < zoneRect.right &&
+                e.clientY > zoneRect.top && e.clientY < zoneRect.bottom) {
+                checkResult(currentSwatch.dataset.color);
+            } else {
+                currentSwatch.classList.remove('dragging');
+                currentSwatch.style.left = '0';
+                currentSwatch.style.top = '0';
+            }
+            dropZone.classList.remove('hover');
+        }
+
+        function checkResult(color) {
+            const allSwatches = document.querySelectorAll('.swatch');
+            allSwatches.forEach(s => s.style.display = 'none');
+            
+            dropZone.innerHTML = '';
+            dropZone.style.backgroundColor = color;
+            dropZone.style.borderColor = 'transparent';
+
+            if (color === targetColor) {
+                score += 100;
+                feedback.innerHTML = '<span style="color: #2ecc71">CORRECT! +100</span>';
+            } else {
+                score = Math.max(0, score - 50);
+                feedback.innerHTML = `<span style="color: #e74c3c">INCORRECT! Target was ${targetColor}</span>`;
+            }
+            
+            scoreDisplay.textContent = score;
+            nextBtn.style.display = 'block';
+        }
+
+        function nextRound() {
+            initRound();
+        }
+
+        initRound();
+    </script>
+</body>
+</html>

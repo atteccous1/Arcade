@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Games | ux bundle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --sidebar-bg: #ffffff;
+            --sidebar-border: #eef1f5;
+            --text-main: #000000;
+            --text-secondary: #4f566b;
+            --accent-blue: #3c4257;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --card-radius: 12px;
+            --thumb-bg: #2d3436;
+            --sidebar-width: 0px;
+            --top-nav-height: 80px;
+        
+            --primary: #BE90D0;
+            --primary-light: #d8b4fe;
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            display: flex;
+            transition: all 0.3s ease;
+        }
+
+        /* Background Blobs */
+        .background-blobs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .blob {
+            position: absolute;
+            filter: blur(40px);
+            opacity: 0.6;
+            transition: transform 0.5s ease-out;
+            pointer-events: none;
+            will-change: transform;
+        }
+
+        .blob-path {
+            transition: d 3s ease-in-out;
+        }
+
+        .blob-1 {
+            width: 900px;
+            height: 400px;
+            top: -50px;
+            left: -200px;
+            fill: #BE90D0;
+            animation: blob-bounce 15s infinite alternate ease-in-out;
+        }
+
+        .blob-2 {
+            width: 600px;
+            height: 600px;
+            bottom: -100px;
+            right: -100px;
+            fill: #F5918A;
+            animation: blob-bounce 20s infinite alternate-reverse ease-in-out;
+        }
+
+        .blob-3 {
+            width: 500px;
+            height: 500px;
+            top: 40%;
+            left: 15%;
+            fill: #A78BFA;
+            animation: blob-bounce 12s infinite alternate ease-in-out;
+        }
+
+        @keyframes blob-bounce {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            33% { transform: translate(30px, -20px) rotate(5deg) scale(1.05); }
+            66% { transform: translate(-20px, 40px) rotate(-3deg) scale(0.95); }
+            100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+        }
+
+        /* Background Grid */
+        .background-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: 80px 80px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 0, 0, 0.07) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Cursor Follower */
+        .cursor-follower {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            background: #BE90D0;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1), 
+                        height 0.4s cubic-bezier(0.23, 1, 0.32, 1), 
+                        background 0.4s ease, 
+                        opacity 0.4s ease,
+                        filter 0.4s ease;
+            will-change: left, top, width, height, background;
+            box-shadow: 0 0 10px rgba(190, 144, 208, 0.5);
+        }
+
+        .cursor-follower.active {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.4);
+            filter: none;
+            box-shadow: none;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .nav-section-title,
+        .card-title,
+        .logo {
+            font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-weight: 600;
+            /* Semibold */
+            color: #000000;
+        }
+
+                /* Header */
+        header {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+            position: fixed;
+            top: 30px;
+            width: 100%;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1400px;
+            width: 100%;
+            height: 70px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+        .logo-link {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        .logo-img {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+            margin-left: -10px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        .nav-links a.active-link {
+            color: var(--primary);
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        .nav-auth {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        .login-btn {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .signup-btn {
+            background: var(--primary-light);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: var(--transition);
+            background: linear-gradient(135deg, #BE90D0 0%, #d1a5e4 100%);
+            box-shadow: 0 4px 15px rgba(190, 144, 208, 0.2);
+        }
+        .signup-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(168, 85, 247, 0.4);
+        }
+
+        /* Modal Styling */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            width: 90%;
+            max-width: 800px;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 32px 64px rgba(0, 0, 0, 0.2);
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-preview {
+            background: #f8f9fa;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .modal-preview video, .modal-preview .card-thumb {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-info {
+            padding: 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .modal-tag {
+            background: #f3f0ff;
+            color: #7c3aed;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            width: fit-content;
+            margin-bottom: 24px;
+        }
+
+        .modal-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: #1a1f36;
+        }
+
+        .modal-desc {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #4f566b;
+            margin-bottom: 32px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn-play {
+            background: linear-gradient(135deg, #f067ff 0%, #a259ff 100%);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 8px 16px rgba(162, 89, 255, 0.3);
+        }
+
+        .btn-play:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(162, 89, 255, 0.4);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                grid-template-columns: 1fr;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+            .modal-preview {
+                height: 250px;
+            }
+            .modal-info {
+                padding: 32px;
+            }
+        }
+
+        .header-icons i {
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .header-icons i:hover {
+            color: #000000;
+        }
+
+        .user-profile {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            overflow: hidden;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-profile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Main Content */
+        main {
+            margin-left: 0;
+            margin-top: var(--top-nav-height);
+            padding: 80px 10%;
+            width: 100%;
+            max-width: 1400px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .content-header {
+            max-width: 800px;
+            margin-bottom: 48px;
+        }
+
+        h1 {
+            font-size: 64px;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+        }
+
+        .subtitle {
+            font-size: 22px;
+            color: #4f566b;
+            line-height: 1.6;
+            max-width: 600px;
+            font-weight: 400;
+        }
+
+        .hero-section h1 {
+            font-size: 72px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: #000;
+        }
+
+        .hero-section h1 span {
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .hero-section h1 span:hover, 
+        .hero-section h1 span.constant-gradient {
+            background: linear-gradient(90deg, #f067ff, #a259ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-section h1 span:hover {
+            transform: translateY(-2px);
+        }
+
+        /* The original gradient-text class can now be simplified or integrated into the span logic */
+        .gradient-text {
+            font-weight: 800;
+        }
+
+        /* Game Grid & Horizontal Scroll */
+        .scroll-wrapper {
+            position: relative;
+            margin-bottom: 32px;
+        }
+
+        .game-grid {
+            display: flex;
+            gap: 32px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 24px 4px;
+            margin: -24px -4px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-snap-type: x mandatory;
+        }
+
+        .game-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .game-card {
+            flex: 0 0 calc(33.333% - 22px);
+            min-width: 350px;
+            scroll-snap-align: start;
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 56px;
+            height: 56px;
+            background: white;
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #1a1f36;
+            transition: all 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .scroll-wrapper:hover .scroll-btn {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .scroll-btn:hover {
+            background: #f8f9fa;
+            transform: translateY(-50%) scale(1.05);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+        }
+
+        .scroll-btn.btn-left {
+            left: -28px;
+        }
+
+        .scroll-btn.btn-right {
+            right: -28px;
+        }
+
+        .game-card.card-orange {
+            background: linear-gradient(135deg, #fff4e6 0%, #ffd8a8 100%);
+        }
+
+        .game-card.card-lavender {
+            background: linear-gradient(135deg, #f3f0ff 0%, #d0bfff 100%);
+        }
+
+        .game-card.card-pink {
+            background: linear-gradient(135deg, #fff0f6 0%, #fcc2d7 100%);
+        }
+
+        .game-card.card-orange .card-desc,
+        .game-card.card-lavender .card-desc,
+        .game-card.card-pink .card-desc {
+            color: #4f566b;
+        }
+
+        .game-card:hover {
+            transform: translateY(-12px) skewX(-1deg);
+        }
+
+        .game-card.card-orange:hover {
+            box-shadow: 0 20px 40px rgba(255, 117, 76, 0.25);
+        }
+
+        .game-card.card-lavender:hover {
+            box-shadow: 0 20px 40px rgba(129, 85, 255, 0.25);
+        }
+
+        .game-card.card-pink:hover {
+            box-shadow: 0 20px 40px rgba(255, 82, 156, 0.25);
+        }
+
+        .card-thumb {
+            height: 240px;
+            background-color: var(--thumb-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-details {
+            padding: 24px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1f36;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .level-section {
+            margin-top: 64px;
+            margin-bottom: 24px;
+        }
+
+        .level-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .level-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(0, 0, 0, 0.08);
+        }
+
+        /* Floating UI */
+        .made-in-webflow {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 100;
+        }
+
+        .webflow-logo {
+            color: #4353ff;
+            font-size: 16px;
+        }
+
+        .fab {
+            position: fixed;
+            bottom: 20px;
+            right: 160px;
+            width: 48px;
+            height: 48px;
+            background: #ff6b6b;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .chat-bubble {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: white;
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            max-width: 200px;
+            font-size: 13px;
+            color: #4f566b;
+            z-index: 100;
+        }
+
+        .chat-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 24px;
+            border-width: 8px 8px 0;
+            border-style: solid;
+            border-color: white transparent transparent;
+        }
+
+                /* Footer */
+        .footer {
+            width: 100vw;
+            padding: 80px 40px 40px;
+            background: white;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            margin-top: 60px;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            box-sizing: border-box;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+        .brand-col {
+            max-width: 300px;
+        }
+        .footer-logo-img {
+            height: 60px;
+            width: auto;
+            margin-bottom: 24px;
+        }
+        .footer-bio {
+            font-size: 16px;
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        .social-links {
+            display: flex;
+            gap: 20px;
+            font-size: 20px;
+        }
+        .social-links a {
+            color: #4b5563;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: #B591CB;
+        }
+        .footer-col h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-col li {
+            margin-bottom: 12px;
+        }
+        .footer-col a {
+            font-size: 15px;
+            color: #6b7280;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .footer-col a:hover {
+            color: #B591CB;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .footer-bottom p {
+            font-size: 14px;
+            color: #9ca3af;
+        }
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+            .brand-col {
+                grid-column: span 2;
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+        @media (max-width: 640px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .brand-col {
+                grid-column: span 1;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            main {
+                padding: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            aside {
+                display: none;
+            }
+
+            .top-nav {
+                left: 0;
+            }
+
+            main {
+                margin-left: 0;
+                padding: 24px;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-grid"></div>
+    <div class="background-blobs">
+        <svg class="blob blob-1" viewBox="0 0 1000 600">
+            <path class="blob-path" d="M920,300 Q880,150 700,100 Q500,50 300,100 Q100,150 80,300 Q100,450 300,500 Q500,550 700,500 Q880,450 920,300 Z" />
+        </svg>
+        <svg class="blob blob-2" viewBox="0 0 800 800">
+            <path class="blob-path" d="M700,400 Q650,200 400,100 Q150,200 100,400 Q150,600 400,700 Q650,600 700,400 Z" />
+        </svg>
+        <svg class="blob blob-3" viewBox="0 0 600 600">
+            <path class="blob-path" d="M500,300 Q450,150 300,100 Q150,150 100,300 Q150,450 300,500 Q450,450 500,300 Z" />
+        </svg>
+    </div>
+    <div class="cursor-follower"></div>
+
+    <header>
+        <div class="nav-container">
+            <a href="../index.html" class="logo-link">
+                <img src="../assets/logo.png" alt="Arcade Logo" class="logo-img">
+            </a>
+            <nav class="nav-links">
+                <a href="../Academicsaboutus/academics.html" id="academics-link">Academics</a>
+                <a href="../Community/community.html" id="community-link">Community</a>
+                <a href="../About/about.html">About</a>
+                <a href="../Community/pricing.html">Pricing</a>
+                <a href="../Games/game.html" class="active-link">Gaming</a>
+            </nav>
+            <div class="nav-auth">
+                <a href="#" class="login-btn">Login</a>
+                <a href="#" class="signup-btn">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero-section">
+            <h1>
+                <span>Test</span> <span>your</span> <span class="constant-gradient">skills</span> <span>with</span> <span>our</span><br>
+                <span class="gradient-text constant-gradient">Design</span> <span class="gradient-text">Games</span>
+            </h1>
+            <p class="subtitle">
+                Explore our collection of interactive games designed to help you master typography, color theory, and layout.
+            </p>
+        </div>
+
+        <div class="level-section">
+            <h2 class="level-title">Beginner</h2>
+            <div class="scroll-wrapper">
+                <button class="scroll-btn btn-left" onclick="scrollGrid(this, -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                <div class="game-grid">
+                    <!-- Card 1 -->
+                    <div class="game-card card-orange">
+                        <div class="card-thumb">
+                            <video autoplay muted loop playsinline>
+                                <source src="visuals images/cosmos_895056278.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="card-details">
+                            <h2 class="card-title">The Bézier Game</h2>
+                            <p class="card-desc">A game to help you to master the pen tool in your favorite design app.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="game-card card-lavender">
+                        <div class="card-thumb">
+                            <video autoplay muted loop playsinline>
+                                <source src="visuals images/cosmos_938211601.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="card-details">
+                            <h2 class="card-title">Can't Unsee</h2>
+                            <p class="card-desc">Can't Unsee is a web-based game that tests your design attention to detail.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="game-card card-pink" data-url="pixels.html">
+                        <div class="card-thumb">
+                            <video autoplay muted loop playsinline>
+                                <source src="visuals images/cosmos_995991773.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="card-details">
+                            <h2 class="card-title">Pixact.ly</h2>
+                            <p class="card-desc">How well do you know your pixels? Test your knowledge by drawing boxes.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="game-card card-orange">
+                        <div class="card-thumb">
+                            <video autoplay muted loop playsinline>
+                                <source src="visuals images/cosmos_1731637577.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="card-details">
+                            <h2 class="card-title">Font Flame</h2>
+                            <p class="card-desc">Tinder for fonts—decide which typefaces you love.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="game-card card-lavender" data-url="logocore.html">
+                        <div class="card-thumb">
+                            <video autoplay muted loop playsinline>
+                                <source src="visuals images/cosmos_352801429.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="card-details">
+                            <h2 class="card-title">LogoCore</h2>
+                            <p class="card-desc">The logo identification challenge. Do you really know your brands?</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="game-card card-pink" data-url="color-hunt.html">
+                        <div class="card-thumb">
+                            <video autoplay muted loop playsinline>
+                                <source src="visuals images/cosmos_1368349746.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="card-details">
+                            <h2 class="card-title">Color Hunt</h2>
+                            <p class="card-desc">Find and match colors in this vibrant scavenger hunt.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="scroll-btn btn-right" onclick="scrollGrid(this, 1)"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+
+        <div class="level-section">
+            <h2 class="level-title">Moderate</h2>
+            <div class="scroll-wrapper">
+                <button class="scroll-btn btn-left" onclick="scrollGrid(this, -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                <div class="game-grid">
+                    <!-- Card 7 -->
+                    <div class="game-card card-orange">
+                        <div class="card-thumb">
+                            <video autoplay muted loop playsinline>
+                                <source src="visuals images/cosmos_145752610.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="card-details">
+                            <h2 class="card-title">Hex Invaders</h2>
+                            <p class="card-desc">Defend your screen by identifying the correct hex codes.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 8 -->
+                    <div class="game-card card-lavender" data-url="hex.html">
+                        <div class="card-thumb">
+                            <video autoplay muted loop playsinline>
+                                <source src="visuals images/cosmos_396628657.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="card-details">
+                            <h2 class="card-title">Hex Match</h2>
+                            <p class="card-desc">Guess the color from the hex code. Drag the correct card to the target to win.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 9 -->
+                    <div class="game-card card-pink" data-url="colors.html">
+                        <div class="card-thumb">
+                            <video autoplay muted loop playsinline>
+                                <source src="visuals images/cosmos_53261707.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="card-details">
+                            <h2 class="card-title">Color</h2>
+                            <p class="card-desc">A color matching game that tests your precision and vision stretch your design limits.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 10 -->
+                    <div class="game-card card-orange">
+                        <div class="card-thumb">
+                            <video autoplay muted loop playsinline>
+                                <source src="visuals images/cosmos_920629187.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="card-details">
+                            <h2 class="card-title">Kolor</h2>
+                            <p class="card-desc">A high-speed color matching challenge for true design ninjas.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 11 -->
+                    <div class="game-card card-lavender">
+                        <div class="card-thumb">
+                            <img src="visuals images/cosmos_1037854398.gif" alt="Shape Type" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="card-details">
+                            <h2 class="card-title">Shape Type</h2>
+                            <p class="card-desc">Master the art of vector path shapes and bezier refinement.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 12 -->
+                    <div class="game-card card-pink">
+                        <div class="card-thumb">
+                            <img src="visuals images/cosmos_1955262242.gif" alt="Typewar" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="card-details">
+                            <h2 class="card-title">Typewar</h2>
+                            <p class="card-desc">Test your font recognition speed and accuracy against the clock.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="scroll-btn btn-right" onclick="scrollGrid(this, 1)"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+
+        <div class="level-section">
+            <h2 class="level-title">Pro</h2>
+            <div class="scroll-wrapper">
+                <button class="scroll-btn btn-left" onclick="scrollGrid(this, -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                <div class="game-grid">
+                    <!-- Card 13 -->
+                    <div class="game-card card-orange" data-url="i-shot-the-serif.html">
+                        <div class="card-thumb">
+                            <img src="visuals images/cosmos_377902732.gif" alt="I Shot the Serif" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="card-details">
+                            <h2 class="card-title">I Shot the Serif</h2>
+                            <p class="card-desc">Help me shoot the serifs—a quick-thinking game for typography lovers.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 14 -->
+                    <div class="game-card card-lavender" data-url="kern.html">
+                        <div class="card-thumb">
+                            <video autoplay muted loop playsinline>
+                                <source src="visuals images/cosmos_895056278.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="card-details">
+                            <h2 class="card-title">Kern Type</h2>
+                            <p class="card-desc">A game that helps you learn to kern type and master professional spacing.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 15 -->
+                    <div class="game-card card-pink" data-url="i-shot-the-serif.html">
+                        <div class="card-thumb">
+                            <video autoplay muted loop playsinline>
+                                <source src="visuals images/cosmos_1731637577.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="card-details">
+                            <h2 class="card-title">I Shot the Serif</h2>
+                            <p class="card-desc">Identify the serifs quickly in this fast-paced typography shooter.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 16 -->
+                    <div class="game-card card-orange">
+                        <div class="card-thumb">
+                            <video autoplay muted loop playsinline>
+                                <source src="visuals images/cosmos_938211601.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="card-details">
+                            <h2 class="card-title">Color Master</h2>
+                            <p class="card-desc">An advanced tetrachromatic color vision test for elite designers.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 17 -->
+                    <div class="game-card card-lavender">
+                        <div class="card-thumb">
+                            <video autoplay muted loop playsinline>
+                                <source src="visuals images/cosmos_995991773.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="card-details">
+                            <h2 class="card-title">It's Centered That</h2>
+                            <p class="card-desc">The ultimate test for your design alignment eye. Can you spot the offsets?</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 18 -->
+                    <div class="game-card card-pink" data-url="kern.html">
+                        <div class="card-thumb">
+                            <video autoplay muted loop playsinline>
+                                <source src="visuals images/cosmos_1368349746.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="card-details">
+                            <h2 class="card-title">Kern Legend</h2>
+                            <p class="card-desc">The most difficult kerning challenges ever created. Only for the brave.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="scroll-btn btn-right" onclick="scrollGrid(this, 1)"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-grid">
+          <!-- Col 1: Brand -->
+          <div class="footer-col brand-col">
+            <img src="../assets/logo.png" alt="Arcade Logo" class="footer-logo-img">
+            <p class="footer-bio">The creative playground for designers to learn, connect, and grow together.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fas fa-globe"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <!-- Col 2: Academics -->
+          <div class="footer-col">
+            <h3>Academics</h3>
+            <ul>
+              <li><a href="#">All Courses</a></li>
+              <li><a href="#">Learning Paths</a></li>
+              <li><a href="#">Workshops</a></li>
+              <li><a href="#">Free Resources</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 3: Community -->
+          <div class="footer-col">
+            <h3>Community</h3>
+            <ul>
+              <li><a href="#">Forum</a></li>
+              <li><a href="#">Events</a></li>
+              <li><a href="#">Mentors</a></li>
+              <li><a href="#">Students</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 4: Company -->
+          <div class="footer-col">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="../About/about.html">About Us</a></li>
+              <li><a href="#">Gaming</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 5: Legal -->
+          <div class="footer-col">
+            <h3>Legal</h3>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Refund Policy</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p>© 2026 Arcade. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    </main>
+
+
+    <div class="chat-bubble">
+        Thank you for visiting. Explore the site and support us here if you ❤️ it
+    </div>
+
+    <!-- Floating UI Widgets -->
+    <div class="made-in-webflow">
+        <i class="fa-solid fa-w webflow-logo"></i>
+        <span>Made in Webflow</span>
+    </div>
+
+    <div class="fab">
+        <i class="fa-solid fa-pencil"></i>
+    </div>
+
+    <!-- Game Preview Modal -->
+    <div id="game-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-close" onclick="closePreview()"><i class="fa-solid fa-xmark"></i></div>
+            <div class="modal-preview" id="modal-preview-area">
+                <!-- Thumbnail/Video will be injected here -->
+            </div>
+            <div class="modal-info">
+                <div id="modal-level-tag" class="modal-tag">Beginner</div>
+                <h2 id="modal-title" class="modal-title">Game Title</h2>
+                <p id="modal-desc" class="modal-desc">Detailed explanation of the game goes here.</p>
+                <div class="modal-actions">
+                    <button class="btn-play" id="modal-play-btn">Start Playing</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function scrollGrid(btn, direction) {
+            const wrapper = btn.closest('.scroll-wrapper');
+            const grid = wrapper.querySelector('.game-grid');
+            const scrollAmount = grid.clientWidth * 0.8;
+            grid.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
+        function openPreview(card) {
+            const title = card.querySelector('.card-title').textContent;
+            const desc = card.querySelector('.card-desc').textContent;
+            const thumb = card.querySelector('.card-thumb').cloneNode(true);
+            const level = card.closest('.level-section').querySelector('.level-title').textContent;
+
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-desc').textContent = "Master the core concepts of " + title + ". " + desc + " This interactive challenge will help you refine your design eye and technical skills through hands-on, playful practice.";
+            document.getElementById('modal-level-tag').textContent = level;
+            
+            const previewArea = document.getElementById('modal-preview-area');
+            previewArea.innerHTML = '';
+            previewArea.appendChild(thumb);
+
+            // Handle "Start Playing" button
+            const playBtn = document.getElementById('modal-play-btn');
+            const gameUrl = card.getAttribute('data-url');
+            
+            if (gameUrl) {
+                playBtn.onclick = () => {
+                    window.location.href = gameUrl;
+                    closePreview();
+                };
+            } else {
+                playBtn.onclick = () => closePreview();
+            }
+
+            // Re-play video if present
+            const video = thumb.querySelector('video');
+            if (video) {
+                video.muted = true;
+                video.play();
+            }
+
+            document.getElementById('game-modal').classList.add('active');
+        }
+
+        function closePreview() {
+            document.getElementById('game-modal').classList.remove('active');
+        }
+
+        // Close modal when clicking on the backdrop
+        document.getElementById('game-modal').addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-overlay')) closePreview();
+        });
+
+        // Initializing click listeners on all game cards
+        document.querySelectorAll('.game-card').forEach(card => {
+            card.addEventListener('click', () => openPreview(card));
+        });
+
+        // Background Blobs Morphing Logic
+        const blobs = document.querySelectorAll('.blob');
+        const blobPaths = [
+            "M920,300 Q880,150 700,100 Q500,50 300,100 Q100,150 80,300 Q100,450 300,500 Q500,550 700,500 Q880,450 920,300 Z",
+            "M900,350 Q850,200 650,150 Q450,100 250,150 Q50,200 60,350 Q50,500 250,550 Q450,600 650,550 Q850,500 900,350 Z",
+            "M880,300 Q840,160 680,120 Q520,80 320,120 Q120,160 100,300 Q120,440 320,480 Q520,520 680,480 Q840,440 880,300 Z",
+            "M900,320 Q860,180 690,130 Q510,70 310,130 Q110,180 90,320 Q110,460 310,510 Q510,560 690,510 Q860,460 900,320 Z"
+        ];
+
+        let pathIndex = 0;
+        function morphBlobs() {
+            pathIndex = (pathIndex + 1) % blobPaths.length;
+            blobs.forEach((blob, i) => {
+                const path = blob.querySelector('path');
+                const target = (pathIndex + i) % blobPaths.length;
+                path.setAttribute('d', blobPaths[target]);
+            });
+        }
+        setInterval(morphBlobs, 3000);
+
+        // Cursor Follower Logic
+        const cursorFollower = document.querySelector('.cursor-follower');
+        let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.1;
+            cursorY += (mouseY - cursorY) * 0.1;
+            cursorFollower.style.left = `${cursorX}px`;
+            cursorFollower.style.top = `${cursorY}px`;
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Cursor Active States
+        document.querySelectorAll('a, button, .game-card').forEach(el => {
+            el.addEventListener('mouseenter', () => cursorFollower.classList.add('active'));
+            el.addEventListener('mouseleave', () => cursorFollower.classList.remove('active'));
+        });
+
+        // Parallax effect on blobs when scrolling
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            blobs.forEach((blob, index) => {
+                const speed = (index + 1) * 0.1;
+                blob.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+    </script>
+</body>
+
+</html>

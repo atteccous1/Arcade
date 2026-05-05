@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Shot the Serif - Arcade Design Games</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'SF Pro';
+            src: url('https://db.onlinewebfonts.com/t/0de2c8e3122c42d38a065f4d89617ce8.woff2') format('woff2');
+        }
+
+        /* Serif Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:wght@700&family=Merriweather:wght@700&family=PT+Serif:wght@700&display=swap');
+        
+        /* Sans-Serif Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Roboto:wght@700&family=Montserrat:wght@700&family=Open+Sans:wght@700&display=swap');
+
+        body {
+            margin: 0;
+            font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 25%, #f5f3ff 50%, #ede9fe 75%, #fdf4ff 100%);
+            background-size: 400% 400%;
+            animation: flowy 15s ease infinite;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        @keyframes flowy {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header {
+            background: white;
+            padding: 12px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 10;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .logo-container img { height: 48px; }
+        .logo-text { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .game-wrapper {
+            background: white;
+            width: 95%;
+            max-width: 1400px;
+            height: 85vh;
+            border-radius: 32px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.1);
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .game-sidebar {
+            width: 350px;
+            background: #fafafa;
+            border-right: 1px solid #eee;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 5;
+        }
+
+        .game-main {
+            flex: 1;
+            background: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .level-info h1 { font-size: 42px; margin: 0; font-weight: 800; color: #1a1a1a; }
+        .level-info p { color: #666; font-size: 18px; line-height: 1.5; margin-top: 15px; }
+
+        .score-box {
+            background: white;
+            padding: 24px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            margin-bottom: 15px;
+        }
+
+        .stat-label { font-weight: 700; color: #999; text-transform: uppercase; font-size: 12px; margin-bottom: 4px; }
+        .stat-value { font-size: 32px; font-weight: 800; color: #a259ff; }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #666;
+            font-weight: 600;
+            margin-top: auto;
+        }
+
+        /* Target Styles */
+        .target {
+            position: absolute;
+            font-size: 80px;
+            cursor: pointer;
+            transition: transform 0.1s, opacity 0.5s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+        }
+
+        .target.shot {
+            transform: scale(1.5);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .target.missed {
+            color: #e74c3c !important;
+            transform: scale(0.8);
+            opacity: 0;
+        }
+
+        .click-feedback {
+            position: absolute;
+            font-size: 24px;
+            font-weight: 800;
+            pointer-events: none;
+            animation: floatUp 0.6s ease-out forwards;
+        }
+
+        @keyframes floatUp {
+            to { transform: translateY(-50px); opacity: 0; }
+        }
+
+        /* Start Overlay */
+        .game-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.95);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .start-btn {
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            padding: 20px 60px;
+            border-radius: 100px;
+            font-size: 24px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 30px;
+        }
+
+        .start-btn:hover {
+            transform: scale(1.05);
+            background: #a259ff;
+        }
+
+        .countdown {
+            font-size: 120px;
+            font-weight: 800;
+            color: #a259ff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="game.html" class="logo-container">
+            <img src="visuals images/Screenshot (140).png" alt="Arcade Logo">
+            <span class="logo-text">Arcade</span>
+        </a>
+        <div class="nav-links" style="display: flex; gap: 30px;">
+            <a href="game.html" style="text-decoration: none; color: #444; font-weight: 600;">Games</a>
+            <a href="#" style="text-decoration: none; color: #444; font-weight: 600;">Pricing</a>
+            <a href="#" style="text-decoration: none; color: #444; font-weight: 600;">Features</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="game-wrapper">
+            <div class="game-sidebar">
+                <div class="level-info">
+                    <div style="color: #a259ff; font-weight: 700; margin-bottom: 8px;">ARCADE MODE</div>
+                    <h1>I Shot the Serif</h1>
+                    <p>Identify and "shoot" only the Serif characters. Don't shoot the Sans-Serif "deputies"!</p>
+                </div>
+
+                <div class="score-box">
+                    <div class="stat-item">
+                        <div class="stat-label">Score</div>
+                        <div id="score" class="stat-value">0</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Time Left</div>
+                        <div id="timer" class="stat-value">60s</div>
+                    </div>
+                </div>
+
+                <a href="game.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Exit to Arcade</a>
+            </div>
+
+            <div class="game-main" id="game-main">
+                <div id="overlay" class="game-overlay">
+                    <h2 style="font-size: 48px; margin-bottom: 10px;">Ready, Aim, Type!</h2>
+                    <p style="font-size: 18px; color: #666; max-width: 400px;">Click only the letters with serifs. Fast accuracy is key.</p>
+                    <button class="start-btn" onclick="startGame()">START MISSION</button>
+                    <div id="countdown" class="countdown" style="display: none;">3</div>
+                </div>
+                <!-- Targets will be injected here -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const serifFonts = ["'Playfair Display'", "'Lora'", "'Merriweather'", "'PT Serif'"];
+        const sansSerifFonts = ["'Inter'", "'Roboto'", "'Montserrat'", "'Open Sans'"];
+        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+        let score = 0;
+        let timeLeft = 60;
+        let gameActive = false;
+        let spawnInterval = null;
+        let timerInterval = null;
+
+        const gameMain = document.getElementById('game-main');
+        const scoreDisplay = document.getElementById('score');
+        const timerDisplay = document.getElementById('timer');
+        const overlay = document.getElementById('overlay');
+        const countdownDisplay = document.getElementById('countdown');
+
+        function startGame() {
+            const startBtn = document.querySelector('.start-btn');
+            startBtn.style.display = 'none';
+            countdownDisplay.style.display = 'block';
+            
+            let count = 3;
+            countdownDisplay.textContent = count;
+            
+            const countInt = setInterval(() => {
+                count--;
+                if (count > 0) {
+                    countdownDisplay.textContent = count;
+                } else {
+                    clearInterval(countInt);
+                    runGame();
+                }
+            }, 1000);
+        }
+
+        function runGame() {
+            overlay.style.display = 'none';
+            gameActive = true;
+            score = 0;
+            timeLeft = 60;
+            scoreDisplay.textContent = score;
+            timerDisplay.textContent = timeLeft + 's';
+
+            spawnInterval = setInterval(spawnTarget, 800);
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                timerDisplay.textContent = timeLeft + 's';
+                if (timeLeft <= 0) endGame();
+            }, 1000);
+        }
+
+        function spawnTarget() {
+            if (!gameActive) return;
+
+            const isSerif = Math.random() > 0.5;
+            const font = isSerif ? serifFonts[Math.floor(Math.random() * serifFonts.length)] 
+                                : sansSerifFonts[Math.floor(Math.random() * sansSerifFonts.length)];
+            const char = characters[Math.floor(Math.random() * characters.length)];
+
+            const target = document.createElement('div');
+            target.className = 'target';
+            target.textContent = char;
+            target.style.fontFamily = font;
+            target.style.color = `hsl(${Math.random() * 360}, 70%, 50%)`;
+            
+            // Random Position
+            const x = Math.random() * (gameMain.clientWidth - 100);
+            const y = Math.random() * (gameMain.clientHeight - 100);
+            target.style.left = x + 'px';
+            target.style.top = y + 'px';
+
+            target.onclick = (e) => {
+                if (isSerif) {
+                    handleHit(target, e);
+                } else {
+                    handleMiss(target, e);
+                }
+            };
+
+            gameMain.appendChild(target);
+
+            // Auto-remove
+            setTimeout(() => {
+                if (target.parentNode) {
+                    target.parentNode.removeChild(target);
+                }
+            }, 2000);
+        }
+
+        function handleHit(target, e) {
+            score += 100;
+            scoreDisplay.textContent = score;
+            target.classList.add('shot');
+            showFeedback("+100", e.clientX, e.clientY, "#2ecc71");
+            
+            // Speed up
+            if (score % 500 === 0) {
+                clearInterval(spawnInterval);
+                spawnInterval = setInterval(spawnTarget, Math.max(300, 800 - (score/100 * 10)));
+            }
+        }
+
+        function handleMiss(target, e) {
+            score = Math.max(0, score - 50);
+            scoreDisplay.textContent = score;
+            target.classList.add('missed');
+            showFeedback("-50 DEPUTY!", e.clientX, e.clientY, "#e74c3c");
+        }
+
+        function showFeedback(text, x, y, color) {
+            const feed = document.createElement('div');
+            feed.className = 'click-feedback';
+            feed.textContent = text;
+            feed.style.color = color;
+            feed.style.left = (x - gameMain.offsetLeft) + 'px';
+            feed.style.top = (y - gameMain.offsetTop) + 'px';
+            gameMain.appendChild(feed);
+            setTimeout(() => feed.remove(), 600);
+        }
+
+        function endGame() {
+            gameActive = false;
+            clearInterval(spawnInterval);
+            clearInterval(timerInterval);
+            
+            overlay.style.display = 'flex';
+            overlay.innerHTML = `
+                <h2 style="font-size: 48px; margin-bottom: 10px;">Mission Over</h2>
+                <div style="font-size: 64px; font-weight: 800; color: #a259ff; margin: 20px 0;">${score}</div>
+                <p style="font-size: 18px; color: #666;">Not bad, Typography Hunter!</p>
+                <button class="start-btn" onclick="location.reload()">TRY AGAIN</button>
+                <a href="game.html" style="display: block; margin-top: 20px; color: #a259ff; font-weight: 700; text-decoration: none;">Back to Arcade</a>
+            `;
+        }
+    </script>
+</body>
+</html>
