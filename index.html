@@ -1,318 +1,440 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arcade - Community Driven Design Platform</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arcade - Level Up Your Design Game</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Gradient Background Artifacts for Premium Feel -->
-    <div class="blob-bg bg-top-right"></div>
-    <div class="blob-bg bg-bottom-left"></div>
+  <div class="background-grid"></div>
+  <div class="background-blobs">
+    <!-- SVG Blobs for complex organic morphing -->
+    <svg class="blob blob-1" viewBox="0 0 1000 600">
+      <path class="blob-path" d="M920,300 Q880,150 700,100 Q500,50 300,100 Q100,150 80,300 Q100,450 300,500 Q500,550 700,500 Q880,450 920,300 Z" />
+    </svg>
+    <svg class="blob blob-2" viewBox="0 0 800 800">
+      <path class="blob-path" d="M700,400 Q650,200 400,100 Q150,200 100,400 Q150,600 400,700 Q650,600 700,400 Z" />
+    </svg>
+    <svg class="blob blob-3" viewBox="0 0 600 600">
+      <path class="blob-path" d="M500,300 Q450,150 300,100 Q150,150 100,300 Q150,450 300,500 Q450,450 500,300 Z" />
+    </svg>
+  </div>
+  <div class="cursor-follower"></div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <span class="dot"></span>
-                arcade
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-link">
+        <img src="assets/logo.png" alt="Arcade Logo" class="logo-img">
+      </a>
+      <nav class="nav-links">
+        <a href="Academicsaboutus/academics.html" id="academics-link">Academics</a>
+        <a href="Community/community.html" id="community-link">Community</a>
+        <a href="About/about.html">About</a>
+        <a href="Community/pricing.html">Pricing</a>
+        <a href="Games/game.html">Gaming</a>
+      </nav>
+      <div class="nav-auth">
+        <a href="#" class="login-btn">Login</a>
+        <a href="#" class="signup-btn">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Level Up Your <span>Design Game</span></h1>
+      <p>A creative playground where designers connect, <br> learn, and evolve together.</p>
+      <div class="cta-group">
+        <a href="#" class="btn btn-secondary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          Get Started
+        </a>
+        <a href="#" class="btn btn-primary">View All Courses</a>
+      </div>
+    </section>
+
+    <div class="carousel-viewport">
+      <div class="carousel-container" id="carousel">
+        <!-- 10 Pictures total as requested -->
+        <div class="carousel-item">
+          <div class="carousel-item-inner">
+            <img src="assets/Frame 110.png" alt="Design 1">
+            <div class="card-overlay">
+              <div class="card-title">Animation Design</div>
+              <div class="card-arrow">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
             </div>
-            <div class="search-bar">
-                <i class="ri-search-line"></i>
-                <input type="text" placeholder="Search courses, mentors, or topics">
-            </div>
-            <ul class="nav-links">
-                <li><a href="#" class="active">Courses</a></li>
-                <li><a href="#">Paths</a></li>
-                <li><a href="#">Experts</a></li>
-                <li><a href="#">Community</a></li>
-            </ul>
-            <div class="profile-action">
-                <div class="avatar-sm">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Profile">
-                </div>
-            </div>
+          </div>
         </div>
-    </nav>
+        <div class="carousel-item">
+          <div class="carousel-item-inner">
+            <img src="assets/Frame 111.png" alt="Design 2">
+            <div class="card-overlay">
+              <div class="card-title">Music App Interface</div>
+              <div class="card-category">UI/UX Design</div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-item-inner">
+            <img src="assets/Frame 112.png" alt="Design 3">
+            <div class="card-overlay">
+              <div class="card-title">Modern Structure</div>
+              <div class="card-category">3D Visualization</div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-item-inner">
+            <img src="assets/Frame 113.png" alt="Design 4">
+            <div class="card-overlay">
+              <div class="card-title">Premium Interface</div>
+              <div class="card-category">App Design</div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-item-inner">
+            <img src="assets/Frame 114.png" alt="Design 5">
+            <div class="card-overlay">
+              <div class="card-title">Abstract Geometry</div>
+              <div class="card-category">CGI</div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-item-inner">
+            <img src="assets/Frame 115.png" alt="Design 6">
+            <div class="card-overlay">
+              <div class="card-title">Dynamic UI</div>
+              <div class="card-category">Mobile Design</div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-item-inner">
+            <img src="assets/Frame 112.png" alt="Design 7">
+            <div class="card-overlay">
+              <div class="card-title">Minimalist Living</div>
+              <div class="card-category">Interior Design</div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-item-inner">
+            <img src="assets/Frame 116.png" alt="Design 8">
+            <div class="card-overlay">
+              <div class="card-title">Smart Dashboard</div>
+              <div class="card-category">Product Design</div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-item-inner">
+            <img src="assets/Frame 117.png" alt="Design 9">
+            <div class="card-overlay">
+              <div class="card-title">Eco Workspace</div>
+              <div class="card-category">Graphic Design</div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-item-inner">
+            <img src="assets/Frame 118.png" alt="Design 10">
+            <div class="card-overlay">
+              <div class="card-title">Electric Future</div>
+              <div class="card-category">Concept Art</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Elevate your design<br>with <span>Arcade</span></h1>
-                <p>A community-driven design platform where people enroll and get lessons on design via immersive, expert-led modules.</p>
-                <div class="hero-actions">
-                    <button class="btn btn-primary">Enroll Now <i class="ri-arrow-right-line"></i></button>
-                    <button class="btn btn-secondary">Explore Modules</button>
-                </div>
-            </div>
-            
-            <div class="hero-cards-arch">
-                <div class="arch-card" style="--rotation: -12deg; --y-offset: 60px; --delay: 0.1s;">
-                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&q=80" alt="Design">
-                </div>
-                <div class="arch-card" style="--rotation: -6deg; --y-offset: 20px; --delay: 0.2s;">
-                    <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=400&q=80" alt="Design">
-                </div>
-                <div class="arch-card active" style="--rotation: 0deg; --y-offset: 0px; --delay: 0.3s; transform-origin: bottom center;">
-                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&q=80" alt="Design">
-                    <div class="play-overlay"><i class="ri-play-fill"></i></div>
-                </div>
-                <div class="arch-card" style="--rotation: 6deg; --y-offset: 20px; --delay: 0.4s;">
-                    <img src="https://images.unsplash.com/photo-1626785724573-cbfa85481c6e?w=400&q=80" alt="Design">
-                </div>
-                <div class="arch-card" style="--rotation: 12deg; --y-offset: 60px; --delay: 0.5s;">
-                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&q=80" alt="Design">
-                </div>
-            </div>
-        </section>
+    <!-- Partners Static Section -->
+    <section class="partners-section">
+      <div class="partners-list">
+        <div class="partner-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path d="M12 5.04c1.44 0 2.74.49 3.76 1.45l2.82-2.82C16.89 1.84 14.61 1 12 1 8.11 1 4.76 2.94 2.18 5.89l3.66 2.84c.87-2.6 3.3-4.69 6.16-4.69z"/><path d="M12 18.96c-2.86 0-5.29-2.09-6.16-4.69l-3.66 2.84C4.76 21.06 8.11 23 12 23c2.97 0 5.48-1.12 7.4-3.04l-3.55-2.75c-.95.57-2.22.85-3.85.85z"/><path d="M22.25 12c0-.66-.06-1.29-.16-1.91H12v3.62h5.75c-.25 1.34-1.01 2.47-2.14 3.23l3.55 2.75C21.24 17.58 22.25 15.01 22.25 12z"/></svg>
+          Google
+        </div>
+        <div class="partner-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M11.4 24H0V12.6h11.4V24zM24 24H12.6V12.6H24V24zM11.4 11.4H0V0h11.4v11.4zM24 11.4H12.6V0H24v11.4z"/></svg>
+          Microsoft
+        </div>
+        <div class="partner-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M4 2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zM4 4v16h16V4H4zm3 3h4v2H7V7zm6 0h4v2h-4V7zm-6 4h4v2H7v-2zm6 0h4v2h-4v-2zm-6 4h4v2H7v-2zm6 0h4v2h-4v-2z"/></svg>
+          Notion
+        </div>
+        <div class="partner-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M13.6 15l2-8h2.4l-2 8h-2.4zm-4.8 0l2-8H8.4l-2 8h2.4z"/></svg>
+          webflow
+        </div>
+        <div class="partner-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M13.908 1l5.586 16.5h2.506l-6.84-20H12.84l-6.84 20h2.506l5.586-16.5zM12 13.5l-2.4 7.5h4.8l-2.4-7.5z"/></svg>
+          Adobe
+        </div>
+        <div class="partner-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2l6 4-6 4-6-4 6-4zm12 0l6 4-6 4-6-4 6-4zM6 10v8l6-4V6l-6 4zm12 0l-6 4v8l6-4v-8zm-6 4l6 4-6 4-6-4 6-4z"/></svg>
+          Dropbox
+        </div>
+        <div class="partner-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M5 2h14v7h-7v7h7v6H5V2z"/></svg>
+          Framer
+        </div>
+      </div>
+    </section>
 
-        <!-- Intro Text Below Hero -->
-        <section class="intro-split">
-            <div class="intro-left">
-                <h2>Shaping the future<br>of UI/UX Design</h2>
-            </div>
-            <div class="intro-right">
-                <p>Join thousands of students and master visual communication, prototyping, and user research. Learn from the best minds in the industry. Welcome to a platform that inspires innovation.</p>
-            </div>
-        </section>
+    <!-- Popular Courses Section -->
+    <section class="popular-courses">
+      <div class="courses-header">
+        <div class="courses-title">
+          <div class="vertical-bar"></div>
+          <h2>POPULAR COURSES</h2>
+        </div>
+        <div class="courses-controls">
+          <a href="#" class="btn-recent">
+            RECENT PROJECTS
+            <span class="btn-icon">
+               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </span>
+          </a>
+          <div class="nav-arrows">
+            <button class="nav-arrow left" aria-label="Previous">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <button class="nav-arrow right" aria-label="Next">
+               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+        </div>
+      </div>
 
-        <!-- Courses Section -->
-        <section class="courses">
-            <h2 class="section-title">Explore Inspiring Online Courses</h2>
-            <div class="category-pills">
-                <button class="pill active">Featured</button>
-                <button class="pill">UI/UX Design</button>
-                <button class="pill">Animation</button>
-                <button class="pill">Illustration</button>
-                <button class="pill">Branding</button>
-                <button class="pill">Marketing</button>
-                <button class="pill">3D Art</button>
+      <div class="courses-slider-container">
+        <div class="courses-track">
+          <!-- Card 1 -->
+          <div class="course-card">
+            <div class="course-card-inner">
+              <img src="assets/Frame 97.png" alt="Card 1">
             </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="course-card">
+            <div class="course-card-inner">
+              <img src="assets/Frame 98.png" alt="Card 2">
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="course-card">
+            <div class="course-card-inner">
+              <img src="assets/Frame 99.png" alt="Card 3">
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="course-card">
+            <div class="course-card-inner">
+              <img src="assets/Frame 100.png" alt="Card 4">
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="course-card">
+            <div class="course-card-inner">
+              <img src="assets/Frame 101.png" alt="Card 5">
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="course-card">
+            <div class="course-card-inner">
+              <img src="assets/Frame 102.png" alt="Card 6">
+            </div>
+          </div>
+          <!-- Card 7 -->
+          <div class="course-card">
+            <div class="course-card-inner">
+              <img src="assets/Frame 103.png" alt="Card 7">
+            </div>
+          </div>
+          <!-- Card 8 -->
+          <div class="course-card">
+            <div class="course-card-inner">
+              <img src="assets/Frame 104.png" alt="Card 8">
+            </div>
+          </div>
+          </div>
 
-            <div class="course-grid">
-                <!-- Course Item 1 -->
-                <div class="course-card">
-                    <div class="course-thumb">
-                        <img src="https://images.unsplash.com/photo-1616423640778-28d1b53229bd?w=600&q=80" alt="Course Thumbnail">
-                        <div class="thumb-overlay">
-                            <button class="play-btn-small"><i class="ri-play-fill"></i></button>
-                        </div>
-                    </div>
-                    <div class="course-meta">
-                        <span>24,570 students</span>
-                        <span>18h 24m</span>
-                    </div>
-                    <h3 class="course-title">UI/UX Design Masterclass: Prototyping</h3>
-                    <p class="course-author">By Jane Doe</p>
-                </div>
-                <!-- Course Item 2 -->
-                <div class="course-card">
-                    <div class="course-thumb">
-                        <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=600&q=80" alt="Course Thumbnail">
-                        <div class="thumb-overlay">
-                            <button class="play-btn-small"><i class="ri-play-fill"></i></button>
-                        </div>
-                    </div>
-                    <div class="course-meta">
-                        <span>12,300 students</span>
-                        <span>10h 15m</span>
-                    </div>
-                    <h3 class="course-title">Brand Identity and Strategy Setup</h3>
-                    <p class="course-author">By Daniel Scott</p>
-                </div>
-                <!-- Course Item 3 -->
-                <div class="course-card">
-                    <div class="course-thumb">
-                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80" alt="Course Thumbnail">
-                        <div class="thumb-overlay">
-                            <button class="play-btn-small"><i class="ri-play-fill"></i></button>
-                        </div>
-                    </div>
-                    <div class="course-meta">
-                        <span>8,402 students</span>
-                        <span>5h 40m</span>
-                    </div>
-                    <h3 class="course-title">Advanced Animations in Web Design</h3>
-                    <p class="course-author">By Derek Elliot</p>
-                </div>
-                <!-- Course Item 4 -->
-                <div class="course-card">
-                    <div class="course-thumb">
-                        <img src="https://images.unsplash.com/photo-1626785724573-cbfa85481c6e?w=600&q=80" alt="Course Thumbnail">
-                        <div class="thumb-overlay">
-                            <button class="play-btn-small"><i class="ri-play-fill"></i></button>
-                        </div>
-                    </div>
-                    <div class="course-meta">
-                        <span>34,120 students</span>
-                        <span>22h 10m</span>
-                    </div>
-                    <h3 class="course-title">Complete Digital Illustration Guide</h3>
-                    <p class="course-author">By Lisa Bardot</p>
-                </div>
-            </div>
-        </section>
+        </div>
+      </div>
+      
+      <div class="slider-progress">
+        <div class="slider-bar">
+          <div class="slider-fill"></div>
+        </div>
+      </div>
 
-        <!-- Experts Section -->
-        <section class="experts">
-            <div class="experts-header">
-                <h2>Learn from Creative Experts</h2>
-                <p>Skillshare teachers are industry leaders excited to share their tools, techniques, and professional journeys with you.</p>
-            </div>
-            
-            <div class="experts-grid">
-                <div class="expert-card">
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80" alt="Lisa Bardot">
-                    <div class="expert-info">
-                        <span class="badge">Meet</span>
-                        <h3>Lisa Bardot</h3>
-                        <p>Illustrator</p>
-                    </div>
-                </div>
-                <div class="expert-card">
-                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80" alt="Daniel Scott">
-                    <div class="expert-info">
-                        <span class="badge">Meet</span>
-                        <h3>Daniel Scott</h3>
-                        <p>Digital Designer</p>
-                    </div>
-                </div>
-                <div class="expert-card">
-                    <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=400&q=80" alt="Derek Elliot">
-                    <div class="expert-info">
-                        <span class="badge">Meet</span>
-                        <h3>Derek Elliot</h3>
-                        <p>Animator & 3D Artist</p>
-                    </div>
-                </div>
-                <div class="expert-card">
-                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80" alt="Aaron Draplin">
-                    <div class="expert-info">
-                        <span class="badge">Meet</span>
-                        <h3>Aaron Draplin</h3>
-                        <p>Graphic Designer</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    </section>
 
-        <!-- Testimonials Section -->
-        <section class="testimonials">
-            <h2 class="section-title text-center">Why Students Love Arcade</h2>
-            <div class="testimoGrid">
-                <div class="testimonial-card">
-                    <div class="testimo-user">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="User">
-                        <h4>Rachel R</h4>
-                    </div>
-                    <p>"Arcade was the best learning decision I've ever made... Real-world skills without the financial burden of traditional school."</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimo-user">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="User">
-                        <h4>Katrina S.</h4>
-                    </div>
-                    <p>"It's rare that I subscribe for anything, but this is one subscription I can't imagine not having."</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimo-user">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="User">
-                        <h4>Eli V.</h4>
-                    </div>
-                    <p>"I love that Arcade is a platform that keeps inspiring me to learn new things every single day."</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimo-user">
-                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="User">
-                        <h4>Savanna M.</h4>
-                    </div>
-                    <p>"The variety of classes and the creators are incredible. I've learned so much and grown my career."</p>
-                </div>
-            </div>
-        </section>
+    <!-- Word on the Street Section -->
+    <section class="testimonials-section">
+      <div class="courses-title">
+        <div class="vertical-bar"></div>
+        <h2>FOUNDING MEMBERS</h2>
+      </div>
 
-        <!-- Help Section -->
-        <section class="help-section">
-            <h2 class="section-title text-center">What can we help you with?</h2>
-            <div class="help-search">
-                <i class="ri-search-line"></i>
-                <input type="text" placeholder="Search for articles...">
-            </div>
-            
-            <div class="help-grid">
-                <div class="help-card">
-                    <div class="help-icon"><i class="ri-user-star-line"></i></div>
-                    <h3>Designer Accounts</h3>
-                    <p>Creating your profile and sharing your work on Arcade.</p>
-                    <span class="help-meta">23 articles</span>
-                </div>
-                <div class="help-card">
-                    <div class="help-icon"><i class="ri-briefcase-4-line"></i></div>
-                    <h3>Getting Hired</h3>
-                    <p>Learn how to manage projects and get paid using Arcade.</p>
-                    <span class="help-meta">15 articles</span>
-                </div>
-                <div class="help-card">
-                    <div class="help-icon"><i class="ri-user-add-line"></i></div>
-                    <h3>Hiring</h3>
-                    <p>How to hire designers for projects or full-time roles via Arcade.</p>
-                    <span class="help-meta">28 articles</span>
-                </div>
-                <div class="help-card">
-                    <div class="help-icon"><i class="ri-rocket-line"></i></div>
-                    <h3>Projects</h3>
-                    <p>Explore how designers and clients work together smoothly.</p>
-                    <span class="help-meta">10 articles</span>
-                </div>
-            </div>
-        </section>
+      <div class="testimonial-slider">
+        <div class="testimonial-card-container">
+          <!-- Left side: Image -->
+          <div class="testimonial-image-wrapper">
+             <img id="testimonial-img" src="assets/Adyoya1.jpeg" alt="Testimonial Profile">
+          </div>
 
-    </main>
+          <!-- Right side: Content -->
+          <div class="testimonial-content">
+            <div class="quote-icon">“</div>
+            <p id="testimonial-quote" class="quote-text">
+             Design is very personal to me, it's a story that I want to tell to the world
+            </p>
+            <div class="testimonial-footer">
+              <div class="testimonial-info">
+                <h3 id="testimonial-name">Adyotya Sinha</h3>
+                <p id="testimonial-role">Technical Head Supervisor</p>
+              </div>
+              <div class="testimonial-arrows">
+                <button class="nav-arrow testimonial-prev">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button class="nav-arrow testimonial-next">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- Why Arcade Stacked Section -->
+    <section class="why-arcade">
+      <div class="courses-title">
+        <div class="vertical-bar"></div>
+        <h2>WHY ARCADE</h2>
+      </div>
+
+      <div class="stack-container">
+        <!-- Card 1 -->
+        <div class="stack-card card-1">
+          <img src="assets/Frame 106.png" alt="Background" class="card-bg">
+        </div>
+
+        <!-- Card 2 -->
+        <div class="stack-card card-2">
+          <img src="assets/Frame 107.png" alt="Background" class="card-bg">
+        </div>
+
+        <!-- Card 3 -->
+        <div class="stack-card card-3">
+          <img src="assets/Frame 108.png" alt="Background" class="card-bg">
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="cta-card">
+        <div class="cta-grid">
+          <div class="cta-left">
+            <h2 class="cta-title">Let's <span class="gradient-text">Start</span></h2>
+            <p class="cta-subtitle">Design done right and fast by people you can trust.</p>
+            <div class="cta-actions">
+              <a href="#" class="btn-contact-plus">
+                <span class="btn-text">Begin</span>
+                <div class="avatar-stack">
+                  <img src="assets/Tanisha.jpeg" alt="Team 1">
+                  <img src="assets/Sejal.png" alt="Team 2">
+                  <img src="assets/Anushka.jpeg" alt="Team 3">
+                </div>
+              </a>
+              <p class="cta-note">* We create creators 🔥</p>
+            </div>
+          </div>
+          <div class="cta-right">
+            <div class="cta-image-wrapper">
+              <video src="assets/bg vid.mp4" autoplay loop muted playsinline alt="Project moodboard"></video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Full Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <div class="logo">
-                    <span class="dot"></span>
-                    arcade
-                </div>
-                <p>The premier community-driven design platform.</p>
-            </div>
-            <div class="footer-links">
-                <div class="link-group">
-                    <h4>Platform</h4>
-                    <a href="#">Courses</a>
-                    <a href="#">Paths</a>
-                    <a href="#">Pricing</a>
-                </div>
-                <div class="link-group">
-                    <h4>Community</h4>
-                    <a href="#">Forum</a>
-                    <a href="#">Events</a>
-                    <a href="#">Discord</a>
-                </div>
-                <div class="link-group">
-                    <h4>Company</h4>
-                    <a href="#">About Us</a>
-                    <a href="#">Gaming</a>
-                    <a href="#">Contact</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Arcade. All rights reserved.</p>
+      <div class="footer-container">
+        <div class="footer-grid">
+          <!-- Col 1: Brand -->
+          <div class="footer-col brand-col">
+            <img src="assets/logo.png" alt="Arcade Logo" class="footer-logo-img">
+            <p class="footer-bio">The creative playground for designers to learn, connect, and grow together.</p>
             <div class="social-links">
-                <a href="#"><i class="ri-twitter-x-line"></i></a>
-                <a href="#"><i class="ri-instagram-line"></i></a>
-                <a href="#"><i class="ri-dribbble-line"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fas fa-globe"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
+          </div>
+
+          <!-- Col 2: Academics -->
+          <div class="footer-col">
+            <h3>Academics</h3>
+            <ul>
+              <li><a href="#">All Courses</a></li>
+              <li><a href="#">Learning Paths</a></li>
+              <li><a href="#">Workshops</a></li>
+              <li><a href="#">Free Resources</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 3: Community -->
+          <div class="footer-col">
+            <h3>Community</h3>
+            <ul>
+              <li><a href="#">Forum</a></li>
+              <li><a href="#">Events</a></li>
+              <li><a href="#">Mentors</a></li>
+              <li><a href="#">Students</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 4: Company -->
+          <div class="footer-col">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="About/about.html">About Us</a></li>
+              <li><a href="Games/game.html">Gaming</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 5: Legal -->
+          <div class="footer-col">
+            <h3>Legal</h3>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Refund Policy</a></li>
+            </ul>
+          </div>
         </div>
+        
+        <div class="footer-bottom">
+          <p>© 2026 Arcade. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
+
