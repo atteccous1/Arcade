@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arcade - Level Up Your Design Game</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="background-grid"></div>
+  <div class="background-blobs">
+    <!-- SVG Blobs for complex organic morphing -->
+    <svg class="blob blob-1" viewBox="0 0 1000 600">
+      <path class="blob-path" d="M920,300 Q880,150 700,100 Q500,50 300,100 Q100,150 80,300 Q100,450 300,500 Q500,550 700,500 Q880,450 920,300 Z" />
+    </svg>
+    <svg class="blob blob-2" viewBox="0 0 800 800">
+      <path class="blob-path" d="M700,400 Q650,200 400,100 Q150,200 100,400 Q150,600 400,700 Q650,600 700,400 Z" />
+    </svg>
+    <svg class="blob blob-3" viewBox="0 0 600 600">
+      <path class="blob-path" d="M500,300 Q450,150 300,100 Q150,150 100,300 Q150,450 300,500 Q450,450 500,300 Z" />
+    </svg>
+  </div>
+  <div class="cursor-follower"></div>
+
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo-link">
+        <img src="assets/logo.png" alt="Arcade Logo" class="logo-img">
+      </a>
+      <nav class="nav-links">
+        <a href="Academicsaboutus/academics.html" id="academics-link">Academics</a>
+        <a href="Community/community.html" id="community-link">Community</a>
+        <a href="About/about.html">About</a>
+        <a href="Community/pricing.html">Pricing</a>
+        <a href="Games/game.html">Gaming</a>
+      </nav>
+      <div class="nav-auth">
+        <a href="#" class="login-btn">Login</a>
+        <a href="#" class="signup-btn">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Level Up Your <span>Design Game</span></h1>
+      <p>A creative playground where designers connect, <br> learn, and evolve together.</p>
+      <div class="cta-group">
+        <a href="#" class="btn btn-secondary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          Get Started
+        </a>
+        <a href="#" class="btn btn-primary">View All Courses</a>
+      </div>
+    </section>
+
+    <div class="carousel-viewport">
+      <div class="carousel-container" id="carousel">
+        <!-- 10 Pictures total as requested -->
+        <div class="carousel-item">
+          <div class="carousel-item-inner">
+            <img src="assets/Frame 110.png" alt="Design 1">
+            <div class="card-overlay">
+              <div class="card-title">Animation Design</div>
+              <div class="card-arrow">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-item-inner">
+            <img src="assets/Frame 111.png" alt="Design 2">
+            <div class="card-overlay">
+              <div class="card-title">Music App Interface</div>
+              <div class="card-category">UI/UX Design</div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-item-inner">
+            <img src="assets/Frame 112.png" alt="Design 3">
+            <div class="card-overlay">
+              <div class="card-title">Modern Structure</div>
+              <div class="card-category">3D Visualization</div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-item-inner">
+            <img src="assets/Frame 113.png" alt="Design 4">
+            <div class="card-overlay">
+              <div class="card-title">Premium Interface</div>
+              <div class="card-category">App Design</div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-item-inner">
+            <img src="assets/Frame 114.png" alt="Design 5">
+            <div class="card-overlay">
+              <div class="card-title">Abstract Geometry</div>
+              <div class="card-category">CGI</div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-item-inner">
+            <img src="assets/Frame 115.png" alt="Design 6">
+            <div class="card-overlay">
+              <div class="card-title">Dynamic UI</div>
+              <div class="card-category">Mobile Design</div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-item-inner">
+            <img src="assets/Frame 112.png" alt="Design 7">
+            <div class="card-overlay">
+              <div class="card-title">Minimalist Living</div>
+              <div class="card-category">Interior Design</div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-item-inner">
+            <img src="assets/Frame 116.png" alt="Design 8">
+            <div class="card-overlay">
+              <div class="card-title">Smart Dashboard</div>
+              <div class="card-category">Product Design</div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-item-inner">
+            <img src="assets/Frame 117.png" alt="Design 9">
+            <div class="card-overlay">
+              <div class="card-title">Eco Workspace</div>
+              <div class="card-category">Graphic Design</div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-item-inner">
+            <img src="assets/Frame 118.png" alt="Design 10">
+            <div class="card-overlay">
+              <div class="card-title">Electric Future</div>
+              <div class="card-category">Concept Art</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Partners Static Section -->
+    <section class="partners-section">
+      <div class="partners-list">
+        <div class="partner-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path d="M12 5.04c1.44 0 2.74.49 3.76 1.45l2.82-2.82C16.89 1.84 14.61 1 12 1 8.11 1 4.76 2.94 2.18 5.89l3.66 2.84c.87-2.6 3.3-4.69 6.16-4.69z"/><path d="M12 18.96c-2.86 0-5.29-2.09-6.16-4.69l-3.66 2.84C4.76 21.06 8.11 23 12 23c2.97 0 5.48-1.12 7.4-3.04l-3.55-2.75c-.95.57-2.22.85-3.85.85z"/><path d="M22.25 12c0-.66-.06-1.29-.16-1.91H12v3.62h5.75c-.25 1.34-1.01 2.47-2.14 3.23l3.55 2.75C21.24 17.58 22.25 15.01 22.25 12z"/></svg>
+          Google
+        </div>
+        <div class="partner-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M11.4 24H0V12.6h11.4V24zM24 24H12.6V12.6H24V24zM11.4 11.4H0V0h11.4v11.4zM24 11.4H12.6V0H24v11.4z"/></svg>
+          Microsoft
+        </div>
+        <div class="partner-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M4 2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zM4 4v16h16V4H4zm3 3h4v2H7V7zm6 0h4v2h-4V7zm-6 4h4v2H7v-2zm6 0h4v2h-4v-2zm-6 4h4v2H7v-2zm6 0h4v2h-4v-2z"/></svg>
+          Notion
+        </div>
+        <div class="partner-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M13.6 15l2-8h2.4l-2 8h-2.4zm-4.8 0l2-8H8.4l-2 8h2.4z"/></svg>
+          webflow
+        </div>
+        <div class="partner-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M13.908 1l5.586 16.5h2.506l-6.84-20H12.84l-6.84 20h2.506l5.586-16.5zM12 13.5l-2.4 7.5h4.8l-2.4-7.5z"/></svg>
+          Adobe
+        </div>
+        <div class="partner-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2l6 4-6 4-6-4 6-4zm12 0l6 4-6 4-6-4 6-4zM6 10v8l6-4V6l-6 4zm12 0l-6 4v8l6-4v-8zm-6 4l6 4-6 4-6-4 6-4z"/></svg>
+          Dropbox
+        </div>
+        <div class="partner-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M5 2h14v7h-7v7h7v6H5V2z"/></svg>
+          Framer
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Courses Section -->
+    <section class="popular-courses">
+      <div class="courses-header">
+        <div class="courses-title">
+          <div class="vertical-bar"></div>
+          <h2>POPULAR COURSES</h2>
+        </div>
+        <div class="courses-controls">
+          <a href="#" class="btn-recent">
+            RECENT PROJECTS
+            <span class="btn-icon">
+               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </span>
+          </a>
+          <div class="nav-arrows">
+            <button class="nav-arrow left" aria-label="Previous">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <button class="nav-arrow right" aria-label="Next">
+               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="courses-slider-container">
+        <div class="courses-track">
+          <!-- Card 1 -->
+          <div class="course-card">
+            <div class="course-card-inner">
+              <img src="assets/Frame 97.png" alt="Card 1">
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="course-card">
+            <div class="course-card-inner">
+              <img src="assets/Frame 98.png" alt="Card 2">
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="course-card">
+            <div class="course-card-inner">
+              <img src="assets/Frame 99.png" alt="Card 3">
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="course-card">
+            <div class="course-card-inner">
+              <img src="assets/Frame 100.png" alt="Card 4">
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="course-card">
+            <div class="course-card-inner">
+              <img src="assets/Frame 101.png" alt="Card 5">
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="course-card">
+            <div class="course-card-inner">
+              <img src="assets/Frame 102.png" alt="Card 6">
+            </div>
+          </div>
+          <!-- Card 7 -->
+          <div class="course-card">
+            <div class="course-card-inner">
+              <img src="assets/Frame 103.png" alt="Card 7">
+            </div>
+          </div>
+          <!-- Card 8 -->
+          <div class="course-card">
+            <div class="course-card-inner">
+              <img src="assets/Frame 104.png" alt="Card 8">
+            </div>
+          </div>
+          </div>
+
+        </div>
+      </div>
+      
+      <div class="slider-progress">
+        <div class="slider-bar">
+          <div class="slider-fill"></div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Word on the Street Section -->
+    <section class="testimonials-section">
+      <div class="courses-title">
+        <div class="vertical-bar"></div>
+        <h2>FOUNDING MEMBERS</h2>
+      </div>
+
+      <div class="testimonial-slider">
+        <div class="testimonial-card-container">
+          <!-- Left side: Image -->
+          <div class="testimonial-image-wrapper">
+             <img id="testimonial-img" src="assets/Adyoya1.jpeg" alt="Testimonial Profile">
+          </div>
+
+          <!-- Right side: Content -->
+          <div class="testimonial-content">
+            <div class="quote-icon">“</div>
+            <p id="testimonial-quote" class="quote-text">
+             Design is very personal to me, it's a story that I want to tell to the world
+            </p>
+            <div class="testimonial-footer">
+              <div class="testimonial-info">
+                <h3 id="testimonial-name">Adyotya Sinha</h3>
+                <p id="testimonial-role">Technical Head Supervisor</p>
+              </div>
+              <div class="testimonial-arrows">
+                <button class="nav-arrow testimonial-prev">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button class="nav-arrow testimonial-next">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Arcade Stacked Section -->
+    <section class="why-arcade">
+      <div class="courses-title">
+        <div class="vertical-bar"></div>
+        <h2>WHY ARCADE</h2>
+      </div>
+
+      <div class="stack-container">
+        <!-- Card 1 -->
+        <div class="stack-card card-1">
+          <img src="assets/Frame 106.png" alt="Background" class="card-bg">
+        </div>
+
+        <!-- Card 2 -->
+        <div class="stack-card card-2">
+          <img src="assets/Frame 107.png" alt="Background" class="card-bg">
+        </div>
+
+        <!-- Card 3 -->
+        <div class="stack-card card-3">
+          <img src="assets/Frame 108.png" alt="Background" class="card-bg">
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="cta-card">
+        <div class="cta-grid">
+          <div class="cta-left">
+            <h2 class="cta-title">Let's <span class="gradient-text">Start</span></h2>
+            <p class="cta-subtitle">Design done right and fast by people you can trust.</p>
+            <div class="cta-actions">
+              <a href="#" class="btn-contact-plus">
+                <span class="btn-text">Begin</span>
+                <div class="avatar-stack">
+                  <img src="assets/Tanisha.jpeg" alt="Team 1">
+                  <img src="assets/Sejal.png" alt="Team 2">
+                  <img src="assets/Anushka.jpeg" alt="Team 3">
+                </div>
+              </a>
+              <p class="cta-note">* We create creators 🔥</p>
+            </div>
+          </div>
+          <div class="cta-right">
+            <div class="cta-image-wrapper">
+              <video src="assets/bg vid.mp4" autoplay loop muted playsinline alt="Project moodboard"></video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Full Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-grid">
+          <!-- Col 1: Brand -->
+          <div class="footer-col brand-col">
+            <img src="assets/logo.png" alt="Arcade Logo" class="footer-logo-img">
+            <p class="footer-bio">The creative playground for designers to learn, connect, and grow together.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fas fa-globe"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <!-- Col 2: Academics -->
+          <div class="footer-col">
+            <h3>Academics</h3>
+            <ul>
+              <li><a href="#">All Courses</a></li>
+              <li><a href="#">Learning Paths</a></li>
+              <li><a href="#">Workshops</a></li>
+              <li><a href="#">Free Resources</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 3: Community -->
+          <div class="footer-col">
+            <h3>Community</h3>
+            <ul>
+              <li><a href="#">Forum</a></li>
+              <li><a href="#">Events</a></li>
+              <li><a href="#">Mentors</a></li>
+              <li><a href="#">Students</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 4: Company -->
+          <div class="footer-col">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="About/about.html">About Us</a></li>
+              <li><a href="Games/game.html">Gaming</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 5: Legal -->
+          <div class="footer-col">
+            <h3>Legal</h3>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Refund Policy</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p>© 2026 Arcade. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
