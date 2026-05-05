@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcade - Explore Your Design Path</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-grid"></div>
+    <div class="cursor-follower"></div>
+
+    <header>
+        <div class="nav-container">
+            <a href="../index.html" class="logo-link">
+                <img src="../assets/logo.png" alt="Arcade Logo" class="logo-img">
+            </a>
+            <nav class="nav-links">
+                <a href="#" class="active-link" id="academics-link">Academics</a>
+                <a href="../Community/community.html">Community</a>
+                <a href="../About/about.html">About</a>
+                <a href="../Community/pricing.html">Pricing</a>
+                <a href="../Games/game.html">Gaming</a>
+            </nav>
+            <div class="nav-auth">
+                <a href="#" class="login-btn">Login</a>
+                <a href="#" class="signup-btn">Sign Up</a>
+            </div>
+        </div>
+    </header>
+    <main class="hero">
+        <div class="hero-content">
+            <div class="badge">Academics</div>
+            <h1 class="hero-title">Explore Your <br><span>Design Path</span></h1>
+            <p class="hero-subtitle">Discover expert-led courses across UI/UX, Branding, Motion, and more. Start learning, start creating.</p>
+            
+            <div class="hero-search-container">
+                <div class="hero-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search for courses, skills or topics...">
+                </div>
+                <button class="filter-btn">
+                    <i class="fa-solid fa-sliders"></i>
+                </button>
+            </div>
+
+            <div class="popular-topics">
+                <span class="topic-label">Popular Topics</span>
+                <div class="topic-tags">
+                    <button class="tag">UI/UX</button>
+                    <button class="tag">Figma</button>
+                    <button class="tag">Branding</button>
+                    <button class="tag">Motion</button>
+                    <button class="tag">Illustration</button>
+                    <button class="tag-more"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="card uiux float-card" id="uiux-trigger">
+                <div class="card-content">
+                    <h3>UI/UX Design</h3>
+                    <p>120+ Courses</p>
+                </div>
+                <div class="card-image">
+                    <img src="https://illustrations.popsy.co/amber/web-design.svg" alt="UI/UX" class="asset-svg">
+                </div>
+                <button class="card-arrow"><i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+
+            <div class="card branding float-card">
+                <div class="card-content">
+                    <h3>Branding</h3>
+                    <p>80+ Courses</p>
+                </div>
+                <div class="card-image">
+                    <img src="assets/brand_identity.png" alt="Branding" class="asset-svg">
+                </div>
+                <button class="card-arrow"><i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+
+            <div class="card motion float-card">
+                <div class="card-content">
+                    <h3>Motion Design</h3>
+                    <p>70+ Courses</p>
+                </div>
+                <div class="card-image">
+                    <img src="https://illustrations.popsy.co/blue/video-call.svg" alt="Motion" class="asset-svg">
+                </div>
+                <button class="card-arrow"><i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+
+            <div class="card illustration float-card">
+                <div class="card-content">
+                    <h3>Illustration</h3>
+                    <p>60+ Courses</p>
+                </div>
+                <div class="card-image">
+                    <img src="https://illustrations.popsy.co/pink/graphic-design.svg" alt="Illustration" class="asset-svg">
+                </div>
+                <button class="card-arrow"><i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </main>
+
+
+    <section class="all-courses">
+        <div class="section-header">
+            <h2 class="section-title">All Courses <span class="count">(320 Courses)</span></h2>
+            <div class="sort-by">
+                <span>Sort by: <strong>Popular</strong></span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        </div>
+
+        <div class="courses-layout">
+            <aside class="sidebar">
+                <ul class="category-list">
+                    <li class="active"><i class="fa-solid fa-grid-2"></i> All Courses</li>
+                    <li><i class="fa-solid fa-mobile-screen"></i> UI/UX Design</li>
+                    <li><i class="fa-solid fa-pen-nib"></i> Branding</li>
+                    <li><i class="fa-solid fa-play"></i> Motion Design</li>
+                    <li><i class="fa-solid fa-palette"></i> Illustration</li>
+                    <li><i class="fa-solid fa-globe"></i> Web Design</li>
+                    <li><i class="fa-solid fa-cube"></i> 3D Design</li>
+                    <li><i class="fa-solid fa-font"></i> Typography</li>
+                    <li><i class="fa-solid fa-bullhorn"></i> Marketing for Designers</li>
+                    <li><i class="fa-solid fa-box"></i> Product Design</li>
+                </ul>
+            </aside>
+
+            <div class="courses-grid">
+                <!-- Course Card 1 -->
+                <div class="course-card orange">
+                    <div class="card-badge">Bestseller</div>
+                    <div class="card-info">
+                        <h3>UI/UX Design Masterclass</h3>
+                        <p>From Basics to Advanced UI/UX Design</p>
+                    </div>
+                    <div class="card-stats">
+                        <span><i class="fa-regular fa-file-lines"></i> 24 Lessons</span>
+                        <span><i class="fa-regular fa-clock"></i> 12h 30m</span>
+                    </div>
+                    <div class="card-illustration">
+                        <img src="https://illustrations.popsy.co/amber/web-design.svg" alt="UI/UX">
+                    </div>
+                    <button class="card-btn"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+
+                <!-- Course Card 2 -->
+                <div class="course-card purple">
+                    <div class="card-badge">Popular</div>
+                    <div class="card-info">
+                        <h3>Brand Identity Design</h3>
+                        <p>Build Strong Brands That Stand Out</p>
+                    </div>
+                    <div class="card-stats">
+                        <span><i class="fa-regular fa-file-lines"></i> 18 Lessons</span>
+                        <span><i class="fa-regular fa-clock"></i> 12h</span>
+                    </div>
+                    <div class="card-illustration">
+                        <img src="assets/brand_identity.png" alt="Branding">
+                    </div>
+                    <button class="card-btn"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+
+                <!-- Course Card 3 -->
+                <div class="course-card blue">
+                    <div class="card-badge">New</div>
+                    <div class="card-info">
+                        <h3>Motion Design Fundamentals</h3>
+                        <p>Create Stunning Motion Graphics</p>
+                    </div>
+                    <div class="card-stats">
+                        <span><i class="fa-regular fa-file-lines"></i> 20 Lessons</span>
+                        <span><i class="fa-regular fa-clock"></i> 10h 45m</span>
+                    </div>
+                    <div class="card-illustration">
+                        <img src="https://illustrations.popsy.co/blue/video-call.svg" alt="Motion">
+                    </div>
+                    <button class="card-btn"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+
+                <!-- Course Card 4 -->
+                <div class="course-card pink">
+                    <div class="card-info">
+                        <h3>Digital Illustration</h3>
+                        <p>Bring Your Imagination to Life</p>
+                    </div>
+                    <div class="card-stats">
+                        <span><i class="fa-regular fa-file-lines"></i> 16 Lessons</span>
+                        <span><i class="fa-regular fa-clock"></i> 7h 30m</span>
+                    </div>
+                    <div class="card-illustration">
+                        <img src="https://illustrations.popsy.co/pink/graphic-design.svg" alt="Illustration">
+                    </div>
+                    <button class="card-btn"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+
+                <!-- Course Card 5 -->
+                <div class="course-card dark-purple">
+                    <div class="card-info">
+                        <h3>3D Motion Design</h3>
+                        <p>Model. Render. Inspire.</p>
+                    </div>
+                    <div class="card-stats">
+                        <span><i class="fa-regular fa-file-lines"></i> 22 Lessons</span>
+                        <span><i class="fa-regular fa-clock"></i> 18h</span>
+                    </div>
+                    <div class="card-illustration">
+                        <img src="assets/3d_motion.png" alt="3D">
+                    </div>
+                    <button class="card-btn"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+
+                <!-- Course Card 6 -->
+                <div class="course-card teal">
+                    <div class="card-info">
+                        <h3>Web Design Essentials</h3>
+                        <p>Design Modern, Responsive Websites</p>
+                    </div>
+                    <div class="card-stats">
+                        <span><i class="fa-regular fa-file-lines"></i> 18 Lessons</span>
+                        <span><i class="fa-regular fa-clock"></i> 9h 10m</span>
+                    </div>
+                    <div class="card-illustration">
+                        <img src="https://illustrations.popsy.co/teal/work-from-home.svg" alt="Web">
+                    </div>
+                    <button class="card-btn"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+
+                <!-- Course Card 7 -->
+                <div class="course-card yellow">
+                    <div class="card-info">
+                        <h3>Typography Mastery</h3>
+                        <p>Communicate Better with Type</p>
+                    </div>
+                    <div class="card-stats">
+                        <span><i class="fa-regular fa-file-lines"></i> 14 Lessons</span>
+                        <span><i class="fa-regular fa-clock"></i> 6h 30m</span>
+                    </div>
+                    <div class="card-illustration">
+                        <img src="https://illustrations.popsy.co/yellow/creative-work.svg" alt="Typography">
+                    </div>
+                    <button class="card-btn"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+
+                <!-- Course Card 8 -->
+                <div class="course-card light-purple">
+                    <div class="card-info">
+                        <h3>Figma for Designers</h3>
+                        <p>Design Faster, Collaborate Better.</p>
+                    </div>
+                    <div class="card-stats">
+                        <span><i class="fa-regular fa-file-lines"></i> 20 Lessons</span>
+                        <span><i class="fa-regular fa-clock"></i> 8h 40m</span>
+                    </div>
+                    <div class="card-illustration">
+                        <img src="https://illustrations.popsy.co/purple/remote-work.svg" alt="Figma">
+                    </div>
+                    <button class="card-btn"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-grid">
+          <!-- Col 1: Brand -->
+          <div class="footer-col brand-col">
+            <img src="../assets/logo.png" alt="Arcade Logo" class="footer-logo-img">
+            <p class="footer-bio">The creative playground for designers to learn, connect, and grow together.</p>
+            <div class="social-links">
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+              <a href="#"><i class="fa-solid fa-globe"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <!-- Col 2: Academics -->
+          <div class="footer-col">
+            <h3>Academics</h3>
+            <ul>
+              <li><a href="#">All Courses</a></li>
+              <li><a href="#">Learning Paths</a></li>
+              <li><a href="#">Workshops</a></li>
+              <li><a href="#">Free Resources</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 3: Community -->
+          <div class="footer-col">
+            <h3>Community</h3>
+            <ul>
+              <li><a href="#">Forum</a></li>
+              <li><a href="#">Events</a></li>
+              <li><a href="#">Mentors</a></li>
+              <li><a href="#">Students</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 4: Company -->
+          <div class="footer-col">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="../About/about.html">About Us</a></li>
+              <li><a href="../Games/game.html">Gaming</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 5: Legal -->
+          <div class="footer-col">
+            <h3>Legal</h3>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Refund Policy</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p>© 2026 Arcade. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+
+    <!-- UI/UX Modal -->
+    <div id="course-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="modal-inner">
+                <nav class="modal-breadcrumbs">
+                    Academics &nbsp;&gt;&nbsp; UI/UX Design &nbsp;&gt;&nbsp; UI/UX Design Masterclass
+                </nav>
+
+                <div class="modal-grid">
+                    <div class="modal-main">
+                        <header class="modal-hero">
+                            <span class="m-badge">Bestseller</span>
+                            <h1>UI/UX Design Masterclass</h1>
+                            <p class="m-subtitle">From Basics to Advanced UI/UX Design</p>
+                            <p class="m-desc">A complete end-to-end course to master user research, wireframing, prototyping and user interface design using industry best practices.</p>
+                            
+                            <div class="m-meta">
+                                <div class="m-instructor">
+                                    <img src="assets/profile.png" alt="Rohit">
+                                    <div>
+                                        <strong>Rohit Khanna</strong>
+                                        <span>Senior Product Designer, Microsoft</span>
+                                    </div>
+                                </div>
+                                <div class="m-stats">
+                                    <div class="stat">
+                                        <i class="fa-solid fa-star"></i>
+                                        <span><strong>4.8</strong> (2.3k reviews)</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span><strong>12h 30m</strong> Total Length</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span><strong>24</strong> Lessons</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="m-labels">
+                                <span class="label"><i class="fa-solid fa-certificate"></i> Certificate of Completion</span>
+                                <span class="label"><i class="fa-solid fa-infinity"></i> Lifetime Access</span>
+                                <span class="label">Beginner to Advanced</span>
+                            </div>
+                        </header>
+
+                        <nav class="m-tabs">
+                            <button class="tab-btn active" data-tab="overview">Overview</button>
+                            <button class="tab-btn" data-tab="curriculum">Curriculum</button>
+                            <button class="tab-btn" data-tab="projects">Projects</button>
+                            <button class="tab-btn" data-tab="reviews">Reviews</button>
+                            <button class="tab-btn" data-tab="instructor">Instructor</button>
+                            <button class="tab-btn" data-tab="faqs">FAQs</button>
+                        </nav>
+                        
+                        <div id="overview" class="tab-content active">
+                            <section class="m-section">
+                                <h2>What you'll learn</h2>
+                                <div class="m-list-grid">
+                                    <ul>
+                                        <li><i class="fa-solid fa-circle-check"></i> Understand the complete UI/UX design process</li>
+                                        <li><i class="fa-solid fa-circle-check"></i> Conduct user research and create user personas</li>
+                                        <li><i class="fa-solid fa-circle-check"></i> Build wireframes and interactive prototypes</li>
+                                        <li><i class="fa-solid fa-circle-check"></i> Design beautiful, accessible user interfaces</li>
+                                    </ul>
+                                    <ul>
+                                        <li><i class="fa-solid fa-circle-check"></i> Work with real-world case studies</li>
+                                        <li><i class="fa-solid fa-circle-check"></i> Build a strong design portfolio</li>
+                                        <li><i class="fa-solid fa-circle-check"></i> Best practices and industry workflows</li>
+                                    </ul>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div id="projects" class="tab-content">
+                            <section class="m-section">
+                                <div class="section-title-row">
+                                    <h2>Projects you'll build</h2>
+                                    <a href="#">View all projects &rarr;</a>
+                                </div>
+                                <div class="m-projects-grid">
+                                    <div class="project">
+                                        <img src="https://illustrations.popsy.co/amber/web-design.svg" alt="Music App">
+                                        <h3>Music App</h3>
+                                        <span>UI Design</span>
+                                    </div>
+                                    <div class="project">
+                                        <img src="https://illustrations.popsy.co/teal/work-from-home.svg" alt="E-commerce">
+                                        <h3>E-commerce</h3>
+                                        <span>Website</span>
+                                    </div>
+                                    <div class="project">
+                                        <img src="https://illustrations.popsy.co/blue/remote-work.svg" alt="Travel App">
+                                        <h3>Travel App</h3>
+                                        <span>UI/UX Case Study</span>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        
+                        <div id="curriculum" class="tab-content">
+                            <section class="m-section">
+                                <h2>Course Curriculum</h2>
+                                <p>Detailed curriculum coming soon...</p>
+                            </section>
+                        </div>
+
+                        <div id="reviews" class="tab-content">
+                            <section class="m-section">
+                                <h2>Student Reviews</h2>
+                                <p>Our students love this course. Reviews coming soon...</p>
+                            </section>
+                        </div>
+
+                        <div id="instructor" class="tab-content">
+                            <section class="m-section">
+                                <h2>About the Instructor</h2>
+                                <p>Rohit Khanna is a senior designer with 10+ years of experience.</p>
+                            </section>
+                        </div>
+
+                        <div id="faqs" class="tab-content">
+                            <section class="m-section">
+                                <h2>Frequently Asked Questions</h2>
+                                <p>Have questions? We have answers.</p>
+                            </section>
+                        </div>
+                    </div>
+
+                    <aside class="modal-sidebar">
+                        <div class="price-card">
+                            <div class="price-row">
+                                <span class="price">₹2,999</span>
+                                <span class="old-price">₹5,999</span>
+                                <span class="discount">50% OFF</span>
+                            </div>
+                            <button class="enroll-btn">Enroll Now</button>
+                            <button class="wishlist-btn"><i class="fa-regular fa-heart"></i> Add to Wishlist</button>
+                            
+                            <ul class="feature-list">
+                                <li><i class="fa-regular fa-file-video"></i> 24 Lessons</li>
+                                <li><i class="fa-regular fa-clock"></i> 12h 30m On-demand video</li>
+                                <li><i class="fa-solid fa-download"></i> 10 Downloadable resources</li>
+                                <li><i class="fa-solid fa-mobile-screen"></i> Access on mobile and TV</li>
+                                <li><i class="fa-solid fa-medal"></i> Certificate of completion</li>
+                                <li><i class="fa-solid fa-arrows-rotate"></i> Lifetime access</li>
+                            </ul>
+                        </div>
+
+                        <div class="ideal-card">
+                            <h3>This course is ideal for</h3>
+                            <ul>
+                                <li><i class="fa-solid fa-check"></i> Aspiring UI/UX Designers</li>
+                                <li><i class="fa-solid fa-check"></i> Product Designers</li>
+                                <li><i class="fa-solid fa-check"></i> Front-end Developers</li>
+                                <li><i class="fa-solid fa-check"></i> Anyone who wants to learn UI/UX</li>
+                            </ul>
+                        </div>
+
+                        <div class="sponsored-card">
+                            <span class="sponsored-label">Sponsored</span>
+                            <div class="brand"><i class="fa-brands fa-adobe"></i> Adobe Creative Cloud</div>
+                            <h3>The ultimate toolkit for designers.</h3>
+                            <p>Students get 60% off.</p>
+                            <button class="explore-now">Explore Now</button>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
