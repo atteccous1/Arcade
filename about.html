@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Arcade</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="about-page">
+    <div class="background-grid"></div>
+    <div class="background-blobs">
+        <svg class="blob blob-1" viewBox="0 0 1000 600">
+            <path class="blob-path" d="M920,300 Q880,150 700,100 Q500,50 300,100 Q100,150 80,300 Q100,450 300,500 Q500,550 700,500 Q880,450 920,300 Z" />
+        </svg>
+        <svg class="blob blob-2" viewBox="0 0 800 800">
+            <path class="blob-path" d="M700,400 Q650,200 400,100 Q150,200 100,400 Q150,600 400,700 Q650,600 700,400 Z" />
+        </svg>
+        <svg class="blob blob-3" viewBox="0 0 600 600">
+            <path class="blob-path" d="M500,300 Q450,150 300,100 Q150,150 100,300 Q150,450 300,500 Q450,450 500,300 Z" />
+        </svg>
+    </div>
+    <div class="cursor-follower"></div>
+
+    <header>
+        <div class="nav-container">
+            <a href="../index.html" class="logo-link">
+                <img src="../assets/logo.png" alt="Arcade Logo" class="logo-img">
+            </a>
+            <nav class="nav-links">
+                <a href="../Academicsaboutus/academics.html">Academics</a>
+                <a href="../Community/community.html">Community</a>
+                <a href="#" class="active-link">About</a>
+                <a href="../Community/pricing.html">Pricing</a>
+                <a href="../Games/game.html">Gaming</a>
+            </nav>
+            <div class="nav-auth">
+                <a href="#" class="login-btn">Login</a>
+                <a href="#" class="signup-btn">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="about-hero">
+        <div class="about-content">
+            <span class="a-badge">WHO WE ARE</span>
+            <h1 class="about-title">Built for <span class="highlight-pink">designers</span>,<br>by <span class="highlight-purple">designers</span>.</h1>
+            <p class="about-desc">
+                Arcade bridges the gap between learning and real-world creativity through courses, community, and mentorship.
+                <br><br>
+                We're not just a platform — we're a design playground where ideas evolve into skills.
+            </p>
+            <button class="story-btn">
+                Our Story <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </button>
+        </div>
+
+        <div class="about-visual">
+            <div class="glow-sphere"></div>
+            
+            <!-- Floating Cards -->
+            <div class="f-card f-course float-anim" style="--delay: 0s">
+                <div class="f-icon"><i class="fa-solid fa-star"></i></div>
+                <h3>UI/UX Design Fundamentals</h3>
+                <span class="f-badge">Beginner</span>
+                <div class="f-stats">
+                    <span>12 Lessons</span>
+                    <span>12h Duration</span>
+                </div>
+            </div>
+
+            <div class="f-card f-post float-anim" style="--delay: 1.5s">
+                <div class="f-user">
+                    <img src="../assets/profile.png" alt="User">
+                    <span>Community Post</span>
+                </div>
+                <p>Just finished my portfolio case study! Feedback?</p>
+                <div class="f-actions">
+                    <span><i class="fa-solid fa-heart"></i> 128</span>
+                    <span><i class="fa-solid fa-comment"></i> 35</span>
+                </div>
+            </div>
+
+            <div class="f-card f-mentor float-anim" style="--delay: 3s">
+                <span class="f-label">Mentor Spotlight</span>
+                <div class="f-user-info">
+                    <img src="https://i.pravatar.cc/100?u=ankush" alt="Mentor">
+                    <div>
+                        <strong>Ankush Kumar</strong>
+                        <span>Product Designer at Linear</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="f-card f-circle float-anim" style="--delay: 0.8s">
+                <span class="f-label">Creative Circle</span>
+                <div class="f-group">
+                    <img src="https://i.pravatar.cc/100?u=w" alt="Web">
+                    <div>
+                        <strong>Web Design Enthusiasts</strong>
+                        <span>1.2k members</span>
+                    </div>
+                </div>
+                <div class="f-members">
+                    <img src="https://i.pravatar.cc/100?u=1" alt="m1">
+                    <img src="https://i.pravatar.cc/100?u=2" alt="m2">
+                    <img src="https://i.pravatar.cc/100?u=3" alt="m3">
+                    <span class="m-plus">+64</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Stats Section -->
+    <section class="stats-bar">
+        <div class="stat-item">
+            <h2 class="counter" data-target="10000">10k+</h2>
+            <span>Active Students</span>
+        </div>
+        <div class="stat-item">
+            <h2 class="counter" data-target="50">50+</h2>
+            <span>Expert Mentors</span>
+        </div>
+        <div class="stat-item">
+            <h2 class="counter" data-target="100">100+</h2>
+            <span>Hands-on Projects</span>
+        </div>
+        <div class="stat-item">
+            <h2 class="counter" data-target="4.9">4.9/5</h2>
+            <span>Average Rating</span>
+        </div>
+    </section>
+
+    <section class="about-section purpose-section">
+        <span class="s-badge">OUR PURPOSE</span>
+        <h2 class="s-title">Why Arcade Exists</h2>
+        
+        <div class="purpose-grid">
+            <div class="p-card">
+                <div class="p-icon purple-gradient"><i class="fa-solid fa-phone-volume"></i></div>
+                <div class="p-text">
+                    <h3>1. Break the barrier</h3>
+                    <p>Make high-quality design education accessible to everyone, everywhere.</p>
+                </div>
+            </div>
+            <div class="p-card">
+                <div class="p-icon orange-gradient"><i class="fa-solid fa-arrows-rotate"></i></div>
+                <div class="p-text">
+                    <h3>2. Learn by doing</h3>
+                    <p>Focus on real-world projects and practical skills that prepare you for your career.</p>
+                </div>
+            </div>
+            <div class="p-card">
+                <div class="p-icon blue-gradient"><i class="fa-solid fa-handshake"></i></div>
+                <div class="p-text">
+                    <h3>3. Grow together</h3>
+                    <p>Create a supportive community where designers inspire, help, and elevate each other.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section process-section">
+        <span class="s-badge">HOW WE WORK</span>
+        
+        <div class="process-grid">
+            <!-- Step 1 -->
+            <div class="step-card">
+                <span class="step-number num-purple">01</span>
+                <div class="step-icon purple-soft"><i class="fa-solid fa-desktop"></i></div>
+                <h3>Learn</h3>
+                <p>Expert-led courses built by working designers.</p>
+            </div>
+
+            <div class="step-arrow arrow-1"></div>
+
+            <!-- Step 2 -->
+            <div class="step-card">
+                <span class="step-number num-orange">02</span>
+                <div class="step-icon orange-soft"><i class="fa-solid fa-folder-open"></i></div>
+                <h3>Practice</h3>
+                <p>Real-world projects & challenges to apply what you learn.</p>
+            </div>
+
+            <div class="step-arrow arrow-2"></div>
+
+            <!-- Step 3 -->
+            <div class="step-card">
+                <span class="step-number num-blue">03</span>
+                <div class="step-icon blue-soft"><i class="fa-solid fa-user-group"></i></div>
+                <h3>Connect</h3>
+                <p>Creative Circles & community spaces to share and grow.</p>
+            </div>
+
+            <div class="step-arrow arrow-3"></div>
+
+            <!-- Step 4 -->
+            <div class="step-card">
+                <span class="step-number num-pink">04</span>
+                <div class="step-icon pink-soft"><i class="fa-solid fa-comments"></i></div>
+                <h3>Get Guidance</h3>
+                <p>Mentor Lounge & 1-on-1 feedback to level up your journey.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="help-desk-section">
+        <div class="help-desk-box">
+            <div class="help-visual">
+                <img src="https://illustrations.popsy.co/purple/communication.svg" alt="Help 3D">
+            </div>
+            <div class="help-content">
+                <span class="s-badge">HELP DESK</span>
+                <h2>Need Help?</h2>
+                <p>We're here to support you at every step of your journey.</p>
+                
+                <div class="help-links-grid">
+                    <div class="h-link-card">
+                        <div class="h-icon purple-soft"><i class="fa-solid fa-circle-question"></i></div>
+                        <div class="h-text">
+                            <h4>Help Center</h4>
+                            <span>Find answers to common questions</span>
+                        </div>
+                    </div>
+                    <div class="h-link-card">
+                        <div class="h-icon orange-soft"><i class="fa-solid fa-headset"></i></div>
+                        <div class="h-text">
+                            <h4>Contact Support</h4>
+                            <span>Get help from our support team</span>
+                        </div>
+                    </div>
+                    <div class="h-link-card">
+                        <div class="h-icon blue-soft"><i class="fa-solid fa-users"></i></div>
+                        <div class="h-text">
+                            <h4>Community Support</h4>
+                            <span>Ask and help fellow designers</span>
+                        </div>
+                    </div>
+                    <div class="h-link-card">
+                        <div class="h-icon pink-soft"><i class="fa-solid fa-bug"></i></div>
+                        <div class="h-text">
+                            <h4>Report an Issue</h4>
+                            <span>Let us know if something's not right</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col brand-col">
+                    <img src="../assets/logo.png" alt="Arcade Logo" class="footer-logo-img">
+                    <p class="footer-bio">The creative playground for designers to learn, connect, and grow together.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-solid fa-globe"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Academics</h3>
+                    <ul>
+                        <li><a href="#">All Courses</a></li>
+                        <li><a href="#">Learning Paths</a></li>
+                        <li><a href="#">Workshops</a></li>
+                        <li><a href="#">Free Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Community</h3>
+                    <ul>
+                        <li><a href="#">Forum</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Mentors</a></li>
+                        <li><a href="#">Students</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="../Games/game.html">Gaming</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Arcade. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
